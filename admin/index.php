@@ -21,7 +21,7 @@
                       <div class="col-sm-5 text-center text-sm-left">
                         <div class="card-body pb-0 px-0 px-md-6">
                           <img
-                            src="../assets/img/illustrations/man-with-laptop.png"
+                            src="assets/img/illustrations/man-with-laptop.png"
                             height="175"
                             alt="View Badge User" />
                         </div>
@@ -37,7 +37,7 @@
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="../assets/img/icons/unicons/chart-success.png"
+                                src="assets/img/icons/unicons/chart-success.png"
                                 alt="chart success"
                                 class="rounded" />
                             </div>
@@ -71,7 +71,7 @@
                           <div class="card-title d-flex align-items-start justify-content-between mb-4">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="../assets/img/icons/unicons/wallet-info.png"
+                                src="assets/img/icons/unicons/wallet-info.png"
                                 alt="wallet info"
                                 class="rounded" />
                             </div>
