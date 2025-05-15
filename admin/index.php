@@ -10,7 +10,7 @@
                     <div class="d-flex align-items-start row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary mb-3">Selamat Datang di Dashboard  🎉</h5>
+                          <h4 class="card-title text-primary mb-3">Selamat Datang di Dashboard  🎉</h4>
                           <p class="mb-6">
                             You have done 72% more sales today.<br />Check your new badge in your profile.
                           </p>
