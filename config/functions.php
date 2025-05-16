@@ -35,7 +35,7 @@ function insert ($tableName, $data)
 
   $table = validate($tableName);
 
-  $colomns = array_keys($data);
+  $columns = array_keys($data);
   $values = array_values($data);
 
   $finalColumn = implode(',', $columns);
