@@ -116,6 +116,18 @@ function update($tableName, $id, $data){
     }
   }
 
+  // Function delete
+  function delete($tableName, $id){
+    global $conn;
+    
+    $table = validate($tableName);
+    $id = validate($id);
+
+    $query = "DELETE FROM $table WHERE id='$id' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    return $result;
+  }
+
 }
 
 ?>
