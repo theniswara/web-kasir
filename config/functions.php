@@ -65,6 +65,57 @@ function update($tableName, $id, $data){
     return $result;
   }
 
+  function getAll($tableName, $status = NULL){
+    global $conn;
+
+    $table = validate($tableName);
+    $status = validate($status);
+
+    if($status == 'status'){
+      $query = "SELECT * FROM $table WHERE $status='0'";
+    }
+    else{
+      $query = "SELECT * FROM $table";
+    }
+    return mysqli_query($conn, $query);
+  }
+
+  function getById($tableName, $id){
+
+    global $conn;
+
+    $table = validate($tableName);
+    $id = validate($id);
+
+    $query = "SELECT * FROM $table WHERE id='$id' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+
+    if($result){
+      if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $response = [
+        'status' => 404,
+        'data' => $row,
+        'message' => 'Record Found'
+      ];
+      return $response;
+      }else{
+        $response = [
+        'status' => 404,
+        'message' => 'No Data Found'
+      ];
+      return $response;
+      }
+
+    }else{
+      $response = [
+        'status' => 500,
+        'message' => 'Something Went Wrong'
+      ];
+      return $response;
+    }
+  }
+
 }
 
 ?>
