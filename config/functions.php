@@ -28,4 +28,22 @@ function alertMessage(){
   }
 }
 
+// Insert Record
+function insert ($tableName, $data)
+{
+  global $conn;
+
+  $table = validate($tableName);
+
+  $colomns = array_keys($data);
+  $values = array_values($data);
+
+  $finalColumn = implode(',', $columns);
+  $finalValues = "'".implode("','", $values)."'";
+
+  $query = "INSERT INTO $table ($finalColumn) VALUES ($finalValues)";
+  $result = mysqli_query($conn,$query);
+  return $result;
+}
+
 ?>
