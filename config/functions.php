@@ -46,4 +46,25 @@ function insert ($tableName, $data)
   return $result;
 }
 
+// Fungsi update data
+function update($tableName, $id, $data){
+  global $conn;
+
+  $table = validate($tableName);
+  $id = validate($id);
+
+  $updateDataString = "";
+
+  foreach($data as $column => $value){
+    $updateDataString .= $column.'='."'$value',";
+
+    $finalUpdateData = substr(trim($updateDataString),0,-1);
+
+    $query = "UPDATE $table SET $finalUpdateData WHERE id='$id'";
+    $result = mysqli_query($conn, $query);
+    return $result;
+  }
+
+}
+
 ?>
