@@ -65,7 +65,7 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-1">Welcome to Sneat! 👋</h4>
+              <h3 class="mb-1">Login </h3>
               <p class="mb-6">Please sign-in to your account and start the adventure</p>
 
               <form id="formAuthentication" class="mb-6" action="index.html">
