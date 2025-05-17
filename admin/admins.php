@@ -7,7 +7,7 @@
               <div class="card">
                 <h5 class="card-header">Admin/Staff
                   <button type="button" class="btn btn-primary float-end">
-                    <span class="icon-base bx bx-pie-chart-alt icon-sm me-2"></span>Primary
+                    <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Admin
                   </button>
                 </h5>
                 <div class="table-responsive text-nowrap">

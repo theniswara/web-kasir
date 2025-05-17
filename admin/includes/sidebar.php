@@ -72,7 +72,7 @@
             </li>
             <!-- Dashboards -->
             <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+              <a href="index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-smile"></i>
                 <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
               </a>
@@ -169,7 +169,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="admins.php" class="menu-link">
                     <div class="text-truncate" data-i18n="Notifications">List Admin</div>
                   </a>
                 </li>
