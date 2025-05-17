@@ -1,0 +1,6 @@
+.menu-item.active > .menu-link,
+.menu-item.open > .menu-link {
+  background-color: #ffe5b4 !important; /* Light orange highlight, adjust as needed */
+  color: #ff8c00 !important;
+  border-radius: 6px;
+}

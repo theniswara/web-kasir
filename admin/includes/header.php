@@ -53,6 +53,7 @@
     <script src="assets/js/config.js"></script>
 
     <link rel="stylesheet" href="assets/css/custom-overrides.css" />
+    <link rel="stylesheet" href="assets/css/sidebar-highlight-overrides.css" />
   </head>
 
   <body>
