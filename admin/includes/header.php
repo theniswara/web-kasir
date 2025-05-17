@@ -58,12 +58,15 @@
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
 
+  
+
     <?php 
       include('sidebar.php');
     ?>
-    
-    <!-- Layout container -->
-  <div class="layout-page">
+
+    <?php 
+      include('navbar.php');
+    ?>
 
 
     
