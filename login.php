@@ -1,4 +1,34 @@
 <?php 
+require 'config/functions.php';
+
+// Cek apakah tombol login sudah ditekan 
+// Form menggunakan method post
+if(isset($_POST["login"])){
+
+  $username = $_POST["username"];
+  $password = $_POST["password"];
+
+  // Cek satu per satu username & pass apakah ada di db
+  $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+
+  // cek username
+  // mysqli_num_rows = ngitung berapa baris yang dikembalikan dari fungsi select
+  if(mysqli_num_rows($result) === 1) {
+    // jika hasilnya = 1 maka ada
+
+    // cek password
+    $row = mysqli_fetch_assoc($result);
+      if(password_verify($password, $row["password"])){ // ngcek stirng apakah sama dengan hashnya
+        // perbolehkan user masuk ke sistem
+        header("Location: admin/index.php");
+        exit;
+          }
+      }
+
+      $error = true;
+
+}
+
 
 include('includes/header.php'); 
 
@@ -70,17 +100,24 @@ include('includes/header.php');
               </div>
               <!-- /Logo -->
               <h3 class="mb-1">Login </h3>
-              <p class="mb-6">Please sign-in to your account and start the adventure</p>
+              <p class="mb-6">Login untuk masuk ke halaman Dashboard</p>
+              <?php if (isset($error)) : ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                      <strong>Username atau Password salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
 
-              <form id="formAuthentication" class="mb-6" action="index.html">
+              <?php endif;?>
+
+              <form id="formAuthentication" class="mb-6" action="" method="post">
                 <div class="mb-6">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    id="username"
+                    name="username"
+                    placeholder="Masukkan username"
                     autofocus />
                 </div>
                 <div class="mb-6 form-password-toggle">
@@ -108,13 +145,13 @@ include('includes/header.php');
                   </div>
                 </div>
                 <div class="mb-6">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
+                  <button class="btn btn-primary d-grid w-100" name="login" type="submit">Login</button>
                 </div>
               </form>
 
               <p class="text-center">
                 <span>New on our platform?</span>
-                <a href="auth-register-basic.html">
+                <a href="registrasi.php">
                   <span>Create an account</span>
                 </a>
               </p>
