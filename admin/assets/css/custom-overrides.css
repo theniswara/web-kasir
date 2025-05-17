@@ -1,0 +1,5 @@
+:root,
+[data-bs-theme="light"] {
+  --bs-primary: #03346e !important;
+  --bs-primary-rgb: 3, 52, 110 !important;
+}
