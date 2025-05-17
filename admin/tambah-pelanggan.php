@@ -66,7 +66,7 @@
 <script>
   // Sidebar active tab logic for List Produk
   document.addEventListener('DOMContentLoaded', function() {
-    var sidebarLink = document.querySelector('a[href="tambah-admin.php"]');
+    var sidebarLink = document.querySelector('a[href="tambah-pelanggan.php"]');
     if (sidebarLink) {
       // Remove 'active' from all menu-item
       document.querySelectorAll('.menu-item').forEach(function(item) {
@@ -88,6 +88,7 @@
     }
   });
 </script>
+
 
 
 <?php include('includes/footer.php'); ?>

@@ -67,7 +67,7 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-             <li class="menu-header small text-uppercase">
+            <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Core</span>
             </li>
             <!-- Dashboards -->
@@ -78,14 +78,14 @@
               </a>
             </li>
             <li class="menu-item">
-              <a href="create-order.html" class="menu-link">
+              <a href="buat-pesanan.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-create"></i>
                 <div class="text-truncate" data-i18n="Dashboards">Buat Pesanan</div>
               </a>
             </li>
 
             <li class="menu-item">
-              <a href="order.html" class="menu-link">
+              <a href="pesanan.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-orders"></i>
                 <div class="text-truncate" data-i18n="Dashboards">Pesanan</div>
               </a>
@@ -103,12 +103,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="tambah-kategori.php" class="menu-link">
                     <div class="text-truncate" data-i18n="AddCategories">Tambah Kategori</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="list-kategori.php" class="menu-link">
                     <div class="text-truncate" data-i18n="Notifications">List Kategori</div>
                   </a>
                 </li>
@@ -127,7 +127,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="list-produk.php" class="menu-link">
                     <div class="text-truncate" data-i18n="Notifications">List Produk</div>
                   </a>
                 </li>
@@ -145,7 +145,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="tambah-pelanggan.php" class="menu-link">
                     <div class="text-truncate" data-i18n="AddCategories">Tambah Pelanggan</div>
                   </a>
                 </li>
@@ -164,12 +164,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="tambah-admin.php" class="menu-link">
                     <div class="text-truncate" data-i18n="AddCategories">Tambah Admin</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="admins.php" class="menu-link">
+                  <a href="list-admin.php" class="menu-link">
                     <div class="text-truncate" data-i18n="Notifications">List Admin</div>
                   </a>
                 </li>

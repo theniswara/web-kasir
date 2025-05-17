@@ -1,11 +1,12 @@
 <?php include('includes/header.php'); ?>
 
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
    <div class="container-xxl flex-grow-1 container-p-y">
               <!-- Basic Bootstrap Table -->
               <div class="card">
-                <h5 class="card-header">Admin/Staff
+                <h5 class="card-header">Kategori
                   <button type="button" class="btn btn-primary float-end">
                     <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Admin
                   </button>
@@ -67,5 +68,31 @@
               </div>
               </div>
               <!--/ Basic Bootstrap Table -->
+
+<script>
+  // Sidebar active tab logic for List Produk
+  document.addEventListener('DOMContentLoaded', function() {
+    var sidebarLink = document.querySelector('a[href="list-kategori.php"]');
+    if (sidebarLink) {
+      // Remove 'active' from all menu-item
+      document.querySelectorAll('.menu-item').forEach(function(item) {
+        item.classList.remove('active');
+      });
+      // Add 'active' to the parent .menu-item of the current link
+      var parentMenuItem = sidebarLink.closest('.menu-item');
+      if (parentMenuItem) {
+        parentMenuItem.classList.add('active');
+        // If inside submenu, also open parent and set parent as active
+        var parentMenuToggle = parentMenuItem.closest('.menu-sub');
+        if (parentMenuToggle) {
+          var parentToggleItem = parentMenuToggle.closest('.menu-item');
+          if (parentToggleItem) {
+            parentToggleItem.classList.add('open', 'active');
+          }
+        }
+      }
+    }
+  });
+</script>
 
 <?php include('includes/footer.php'); ?>
