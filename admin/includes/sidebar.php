@@ -122,7 +122,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.html" class="menu-link">
+                  <a href="tambah-produk.php" class="menu-link">
                     <div class="text-truncate" data-i18n="AddCategories">Tambah Produk</div>
                   </a>
                 </li>
