@@ -1,4 +1,12 @@
 <?php 
+
+session_start();
+
+if (!isset($_SESSION["login"])) { // jika tdak ada session login 
+  header("Location: ../login.php"); // Kembali ke hlm login
+  exit;
+}
+
 include('includes/header.php');
 ?>
 

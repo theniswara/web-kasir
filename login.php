@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require 'config/functions.php';
 
 // Cek apakah tombol login sudah ditekan 
@@ -19,6 +20,9 @@ if(isset($_POST["login"])){
     // cek password
     $row = mysqli_fetch_assoc($result);
       if(password_verify($password, $row["password"])){ // ngcek stirng apakah sama dengan hashnya
+        // Sebelum ke hlm index, set session dulu
+        $_SESSION["login"] = true;
+        
         // perbolehkan user masuk ke sistem
         header("Location: admin/index.php");
         exit;
