@@ -1,5 +1,11 @@
 <?php 
 session_start();
+
+if(isset($_SESSION["login"])) {
+  header("Location: admin/index.php");
+  exit;
+}
+
 require 'config/functions.php';
 
 // Cek apakah tombol login sudah ditekan 
