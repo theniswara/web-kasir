@@ -42,7 +42,7 @@ include('includes/header.php');
             <tr>
                 <th>Gambar</th>
                 <th>Nama Produk</th>
-                <th>Stok</th>
+                <th>Kategori</th>
                 <th>Harga</th>
                 <th>Actions</th>
               </tr>
