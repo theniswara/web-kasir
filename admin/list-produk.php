@@ -1,6 +1,21 @@
 <?php
 session_start();
 
+// koneksi database
+$conn = mysqli_connect("localhost", "root", "", "toko_gadget");
+
+// ambil data dari tabel produk
+$result = mysqli_query($conn, "SELECT * FROM produk");
+
+// ambil data produk dari objek result (fetch)
+// while( $row = mysqli_fetch_assoc($result)) {
+
+//   var_dump($row['nama_produk']); 
+//   // $produk[] = $row;
+// }
+
+
+
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
   exit;
@@ -22,6 +37,8 @@ include('includes/header.php');
       <div class="table-responsive text-nowrap">
         <table class="table table-bordered">
           <thead class="fw-bold">
+
+          
             <tr>
                 <th>Gambar</th>
                 <th>Nama Produk</th>
@@ -31,90 +48,32 @@ include('includes/header.php');
               </tr>
             </thead>
             <tbody>
+              <?php while( $row = mysqli_fetch_assoc($result)) : ?>
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
                     <img
-                        src="assets/img/produk/samsung-a14.avif"
+                        src="assets/img/produk/<?= $row['gambar'] ?>"
                         alt=""
                         style="width: 80px; height: 80px"
-                        class="rounded  mx-auto d-block "
+                        class="rounded  mx-auto d-block"
                         />
                   </div>
                 </td>
                 <td>
-                  <p class="fw-medium mb-1">Samsung Galaxy A14</p>
+                  <p class="fw-medium mb-1"><?= $row['nama_produk'] ?></p>
                 </td>
                 <td>
-                  <span class="badge badge-success rounded-pill d-inline">15</span>
+                  <span class="badge badge-success rounded-pill d-inline"><?= $row['stok'] ?></span>
                 </td>
-                <td>Rp. 2,500,000.00</td>
+                <td>Rp. <?= number_format($row['harga'], 0, ',', '.') ?></td>
                 <td>
                   <button type="button" class="btn btn-link btn-sm btn-rounded">
                     Edit
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img
-                        src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                        class="rounded-circle"
-                        alt=""
-                        style="width: 45px; height: 45px"
-                        />
-                  </div>
-                </td>
-                <td>
-                  <p class="fw-normal mb-1">Consultant</p>
-                  <p class="text-muted mb-0">Finance</p>
-                </td>
-                <td>
-                  <span class="badge badge-primary rounded-pill d-inline"
-                        >Onboarding</span
-                    >
-                </td>
-                <td>Junior</td>
-                <td>
-                  <button
-                          type="button"
-                          class="btn btn-link btn-rounded btn-sm fw-bold"
-                          data-mdb-ripple-color="dark"
-                          >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img
-                        src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-                        class="rounded-circle"
-                        alt=""
-                        style="width: 45px; height: 45px"
-                        />
-                  </div>
-                </td>
-                <td>
-                  <p class="fw-normal mb-1">Designer</p>
-                  <p class="text-muted mb-0">UI/UX</p>
-                </td>
-                <td>
-                  <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-                </td>
-                <td>Senior</td>
-                <td>
-                  <button
-                          type="button"
-                          class="btn btn-link btn-rounded btn-sm fw-bold"
-                          data-mdb-ripple-color="dark"
-                          >
-                    Edit
-                  </button>
-                </td>
-              </tr>
+              <?php endwhile; ?>
                               </tbody>
                             </table>
                           </div>

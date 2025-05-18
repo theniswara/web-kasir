@@ -16,9 +16,9 @@ include('includes/header.php');
               <!-- Basic Bootstrap Table -->
               <div class="card">
                 <h4 class="card-header fw-bold">Admin/Staff
-                  <button type="button" class="btn btn-primary float-end">
+                  <a href="tambah-admin.php" class="btn btn-primary float-end">
                     <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Admin
-                  </button>
+                  </a>
                 </h4>
                 <div class="table-responsive text-nowrap">
                   <table class="table">
@@ -26,8 +26,7 @@ include('includes/header.php');
 <tr>
       <th>Name</th>
       <th>Title</th>
-      <th>Status</th>
-      <th>Position</th>
+      <th>Role</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -41,7 +40,7 @@ include('includes/header.php');
               style="width: 45; height: 45px"
               class="rounded d-block"
               />
-          <div class="ms-3">
+          <div class="ms-5">
             <p class="fw-bold mb-1">Daniswara</p>
           </div>
         </div>
@@ -51,9 +50,8 @@ include('includes/header.php');
         <p class="text-muted mb-0">IT department</p>
       </td>
       <td>
-        <span class="badge badge-success rounded-pill d-inline">Active</span>
+        <span class="badge badge-success rounded-pill d-inline">Admin</span>
       </td>
-      <td>Senior</td>
       <td>
         <button type="button" class="btn btn-link btn-sm btn-rounded">
           Edit
@@ -65,13 +63,12 @@ include('includes/header.php');
         <div class="d-flex align-items-center">
           <img
               src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-              class="rounded-circle"
+              class="rounded d-block"
               alt=""
               style="width: 45px; height: 45px"
               />
-          <div class="ms-3">
+          <div class="ms-5">
             <p class="fw-bold mb-1">Alex Ray</p>
-            <p class="text-muted mb-0">alex.ray@gmail.com</p>
           </div>
         </div>
       </td>
@@ -84,7 +81,6 @@ include('includes/header.php');
               >Onboarding</span
           >
       </td>
-      <td>Junior</td>
       <td>
         <button
                 type="button"
@@ -100,13 +96,12 @@ include('includes/header.php');
         <div class="d-flex align-items-center">
           <img
               src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-              class="rounded-circle"
+              class="rounded d-block"
               alt=""
               style="width: 45px; height: 45px"
               />
-          <div class="ms-3">
+          <div class="ms-5">
             <p class="fw-bold mb-1">Kate Hunington</p>
-            <p class="text-muted mb-0">kate.hunington@gmail.com</p>
           </div>
         </div>
       </td>
@@ -117,7 +112,6 @@ include('includes/header.php');
       <td>
         <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
       </td>
-      <td>Senior</td>
       <td>
         <button
                 type="button"
