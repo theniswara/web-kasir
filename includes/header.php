@@ -11,7 +11,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo: Login Basic - Pages | Sneat - Bootstrap Dashboard FREE</title>
+    <title>Login</title>
 
     <meta name="description" content="" />
 
@@ -42,6 +42,10 @@
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="admin/assets/vendor/css/pages/page-auth.css" />
+
+    <!-- Color changes -->
+     <link rel="stylesheet" href="admin/assets/css/custom-overrides.css" />
+<link rel="stylesheet" href="admin/assets/css/sidebar-highlight-overrides.css" />
 
     <!-- Helpers -->
     <script src="admin/assets/vendor/js/helpers.js"></script>
