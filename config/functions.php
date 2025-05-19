@@ -76,12 +76,17 @@ function tambah($data) {
   // query insert data
 $query = "INSERT INTO produk 
           VALUES
-          ('', '$gambar', '$nama_produk', '1', '', '$harga', '$id_kategori', '$id_merek')";
+          ('', '$gambar', '$nama_produk', '1', '$harga', '$id_kategori', '$id_merek')";
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn); 
 
 }
 
+function hapus($id) {
+  global $conn;
+  mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id");
+  return mysqli_affected_rows($conn);
+}
 
 ?>
