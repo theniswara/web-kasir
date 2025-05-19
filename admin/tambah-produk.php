@@ -7,13 +7,32 @@ if (!isset($_SESSION["login"])) { // jika tdak ada session login
   exit;
 }
 
+// Cek apakah tombol submit sudah ditekan
+if (isset($_POST["submit"])) {
+  
+  // Cek apakah data berhasil ditambahkan
+  if ( tambah($_POST) > 0) {
+    echo "<script>
+            alert('Data berhasil ditambahkan')
+            document.location.href = 'list-produk.php'
+          </script>";
+  } else {
+    echo "<script>
+            alert('Data gagal ditambahkan')
+          </script>";
+  }
+
+
+  // cek apakah data berhasil ditambahkan
+  var_dump(mysqli_affected_rows($conn));
+}
+
 // Ambil data kategori untuk dropdown
 $kategori = query("SELECT * FROM kategori");
+$merek = query("SELECT * FROM merek");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Proses simpan produk di sini (validasi, upload gambar, dsb)
-    // ...
-}
+
+
 
 include('includes/header.php'); 
 ?>
@@ -26,10 +45,10 @@ include('includes/header.php');
           <h4 class="mb-0 fw-bold">Tambah Produk</h4>
         </div>
         <div class="card-body">
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" action="">
             <div class="mb-4">
-              <label class="form-label">Nama Produk</label>
-              <input type="text" name="nama_produk" class="form-control" required>
+              <label for="nama_produk" class="form-label">Nama Produk</label>
+              <input type="text" name="nama_produk" id="nama_produk" class="form-control" autofocus required>
             </div>
             <div class="mb-4">
               <label class="form-label">Kategori</label>
@@ -37,6 +56,15 @@ include('includes/header.php');
                 <option value="">Pilih Kategori</option>
                 <?php foreach($kategori as $k): ?>
                   <option value="<?= $k['id_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Merek</label>
+              <select name="id_merek" class="form-control" required>
+                <option value="">Pilih Merek</option>
+                <?php foreach($merek as $m): ?>
+                  <option value="<?= $m['id_merek'] ?>"><?= $m['nama'] ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -50,9 +78,9 @@ include('includes/header.php');
             </div>
             <div class="mb-4">
               <label class="form-label">Gambar Produk</label>
-              <input type="file" name="gambar" class="form-control" required>
+              <input type="text" name="gambar" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
         </div>
       </div>
