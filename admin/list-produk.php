@@ -1,25 +1,12 @@
 <?php
 session_start();
-
-// koneksi database
-$conn = mysqli_connect("localhost", "root", "", "toko_gadget");
-
-// ambil data dari tabel produk
-$result = mysqli_query($conn, "SELECT * FROM produk");
-
-// ambil data produk dari objek result (fetch)
-// while( $row = mysqli_fetch_assoc($result)) {
-
-//   var_dump($row['nama_produk']); 
-//   // $produk[] = $row;
-// }
-
-
+require '../config/functions.php';
 
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
   exit;
 }
+
 include('includes/header.php'); 
 ?>
 
