@@ -26,6 +26,8 @@ include('includes/header.php');
       <div class="table-responsive text-nowrap">
         <table class="table table-bordered">
           <thead class="fw-bold">
+
+          
             <tr>
                 <th>No</th>
                 <th>Gambar</th>
@@ -37,50 +39,42 @@ include('includes/header.php');
             </thead>
             <tbody>
               <?php $i = 1; ?>
-              <?php foreach ($produk as $row) : ?>
+              <?php foreach($produk as $row): ?>
                 <tr>
-                  <td class="text-center">
-                    <?= $i ?>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
+                  <td class="text-center align-middle"><?= $i ?></td>
+                  <td class="align-middle">
+                    <div class="d-flex align-items-center justify-content-center">
                       <img
-                        src="assets/img/produk/<?= $row['gambar'] ?>"
-                        alt=""
+                        src="assets/img/produk/<?= htmlspecialchars($row['gambar']) ?>"
+                        alt="<?= htmlspecialchars($row['nama_produk']) ?>"
                         style="width: 80px; height: 80px; object-fit: cover;"
-                        class="rounded mx-auto d-block"
+                        class="rounded shadow-sm border mx-auto d-block"
                       />
                     </div>
                   </td>
-                  <td>
-                    <p class="fw-medium mb-1">
-                      <?= $row['nama_produk'] ?>
-                    </p>
+                  <td class="align-middle">
+                    <span class="fw-semibold text-dark"><?= htmlspecialchars($row['nama_produk']) ?></span>
                   </td>
-                  <td class="text-center">
+                  <td class="text-center align-middle">
                     <?php
-                      // Ganti dengan id_kategori yang sesuai
                       if ($row['id_kategori'] == 1) {
-                        // Misal kategori 1: Makanan
-                        echo '<span class="badge bg-label-primary"> <i class="menu-icon tf-icons bx bxs-smartphone mx-auto"></i></span>';
+                        echo '<span class="badge bg-label-primary"><i class="menu-icon tf-icons bx bxs-smartphone mx-auto"></i> Smartphone</span>';
                       } elseif ($row['id_kategori'] == 2) {
-                        // Misal kategori 2: Minuman
-                        echo '<span class="badge bg-label-primary"> <i class="menu-icon tf-icons bx bx-laptop mx-auto"></i></span>';
+                        echo '<span class="badge bg-label-info"><i class="menu-icon tf-icons bx bx-laptop mx-auto"></i> Laptop</span>';
                       } else {
-                        // Kategori lain
-                        echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
+                        echo '<span class="badge bg-label-secondary"><i class="bx bx-question-mark"></i> Lainnya</span>';
                       }
                     ?>
                   </td>
-                  <td>
-                    Rp. <?= number_format($row['harga'], 0, ',', '.') ?>
+                  <td class="align-middle text-end">
+                    <span class="fw-bold text-primary">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>
                   </td>
-                  <td>
-                    <div class="d-flex justify-content-center">
-                      <a href="edit-produk.php" class="btn btn-success btn-rounded me-2" title="Edit">
+                  <td class="align-middle">
+                    <div class="d-flex justify-content-center gap-2">
+                      <a href="edit-produk.php?id=<?= $row['id_produk'] ?>" class="btn btn-success btn-sm btn-icon rounded-circle" title="Edit">
                         <i class="bx bx-edit"></i>
                       </a>
-                      <a href="hapus-produk.php" class="btn btn-danger btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
+                      <a href="hapus-produk.php?id=<?= $row['id_produk'] ?>" class="btn btn-danger btn-sm btn-icon rounded-circle" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
                         <i class="bx bx-trash"></i>
                       </a>
                     </div>
@@ -89,11 +83,11 @@ include('includes/header.php');
                 <?php $i++; ?>
               <?php endforeach; ?>
             </tbody>
-        </table>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <!--/ Basic Bootstrap Table -->
+    <!--/ Basic Bootstrap Table -->
 
 <script>
   // Sidebar active tab logic for List Produk
