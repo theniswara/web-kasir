@@ -2,6 +2,8 @@
 // Koneksi ke database
 $conn = mysqli_connect("localhost", "root", "", "toko_gadget");
 
+
+
 function query($query) {
   global $conn;
   $result = mysqli_query($conn, $query);
@@ -58,6 +60,26 @@ function registrasi($data){
   // Menghasilkan 1 jika berhasil -1 jika gagal
   return mysqli_affected_rows($conn);
 
+
+}
+
+// Function tambah produk
+function tambah($data) {
+  global $conn;
+
+  $nama_produk = $data["nama_produk"];
+  $id_kategori = $data["id_kategori"];
+  $harga = $data["harga"];
+  $gambar = $data["gambar"];
+  $id_merek = $data["id_merek"];
+
+  // query insert data
+$query = "INSERT INTO produk 
+          VALUES
+          ('', '$gambar', '$nama_produk', '1', '', '$harga', '$id_kategori', '$id_merek')";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn); 
 
 }
 
