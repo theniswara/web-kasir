@@ -1,6 +1,8 @@
 <?php
 session_start();
 require '../config/functions.php';
+$produk = query("SELECT * FROM produk");
+
 
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
@@ -27,6 +29,7 @@ include('includes/header.php');
 
           
             <tr>
+                <th>No</th>
                 <th>Gambar</th>
                 <th>Nama Produk</th>
                 <th>Kategori</th>
@@ -35,8 +38,10 @@ include('includes/header.php');
               </tr>
             </thead>
             <tbody>
-              <?php while( $row = mysqli_fetch_assoc($result)) : ?>
+              <?php $i = 1; ?>
+              <?php foreach( $produk as $row ) : ?>
               <tr>
+                <td class="text-center"><?= $i ?></td>
                 <td>
                   <div class="d-flex align-items-center">
                     <img
@@ -51,7 +56,7 @@ include('includes/header.php');
                   <p class="fw-medium mb-1"><?= $row['nama_produk'] ?></p>
                 </td>
                 <td>
-                  <span class="badge badge-success rounded-pill d-inline"><?= $row['stok'] ?></span>
+                  <span class="badge badge-success rounded-pill d-inline"><?= $row['id_kategori'] ?></span>
                 </td>
                 <td>Rp. <?= number_format($row['harga'], 0, ',', '.') ?></td>
                 <td>
@@ -60,7 +65,8 @@ include('includes/header.php');
                   </button>
                 </td>
               </tr>
-              <?php endwhile; ?>
+              <?php $i++; ?>
+              <?php endforeach; ?>
                               </tbody>
                             </table>
                           </div>
