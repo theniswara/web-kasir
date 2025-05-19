@@ -67,11 +67,11 @@ function registrasi($data){
 function tambah($data) {
   global $conn;
 
-  $nama_produk = $data["nama_produk"];
-  $id_kategori = $data["id_kategori"];
-  $harga = $data["harga"];
-  $gambar = $data["gambar"];
-  $id_merek = $data["id_merek"];
+  $nama_produk = htmlspecialchars($data ["nama_produk"]);
+  $id_kategori = htmlspecialchars($data["id_kategori"]);
+  $harga = htmlspecialchars($data["harga"]);
+  $gambar = htmlspecialchars($data["gambar"]);
+  $id_merek = htmlspecialchars($data["id_merek"]);
 
   // query insert data
 $query = "INSERT INTO produk 

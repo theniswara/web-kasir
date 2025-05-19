@@ -19,6 +19,7 @@ if (isset($_POST["submit"])) {
   } else {
     echo "<script>
             alert('Data gagal ditambahkan')
+            document.location.href = 'list-produk.php'
           </script>";
   }
 
