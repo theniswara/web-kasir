@@ -56,7 +56,19 @@ include('includes/header.php');
                   <p class="fw-medium mb-1"><?= $row['nama_produk'] ?></p>
                 </td>
                 <td>
-                  <span class="badge badge-success rounded-pill d-inline"><?= $row['id_kategori'] ?></span>
+                  <?php
+                    // Ganti dengan id_kategori yang sesuai
+                    if ($row['id_kategori'] == 1) {
+                      // Misal kategori 1: Makanan
+                      echo '<span class="badge badge-success rounded-pill d-inline"><i class="bx bx-bowl-hot"></i> Makanan</span>';
+                    } elseif ($row['id_kategori'] == 2) {
+                      // Misal kategori 2: Minuman
+                      echo '<span class="badge badge-primary rounded-pill d-inline"><i class="bx bx-coffee"></i> Minuman</span>';
+                    } else {
+                      // Kategori lain
+                      echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
+                    }
+                  ?>
                 </td>
                 <td>Rp. <?= number_format($row['harga'], 0, ',', '.') ?></td>
                 <td>
