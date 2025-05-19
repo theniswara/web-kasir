@@ -47,7 +47,7 @@ include('includes/header.php');
                     <img
                         src="assets/img/produk/<?= $row['gambar'] ?>"
                         alt=""
-                        style="width: 80px; height: 80px"
+                        style="width: 80px; height: 80px background-size: cover"
                         class="rounded  mx-auto d-block"
                         />
                   </div>
@@ -55,15 +55,17 @@ include('includes/header.php');
                 <td>
                   <p class="fw-medium mb-1"><?= $row['nama_produk'] ?></p>
                 </td>
-                <td>
+                <td class="text-center">
                   <?php
                     // Ganti dengan id_kategori yang sesuai
                     if ($row['id_kategori'] == 1) {
                       // Misal kategori 1: Makanan
-                      echo '<span class="badge badge-success rounded-pill d-inline"><i class="bx bx-bowl-hot"></i> Makanan</span>';
+                      echo '
+                        <span class="badge bg-label-primary"> <i class="menu-icon tf-icons bx bxs-smartphone mx-auto"></i></span>';
                     } elseif ($row['id_kategori'] == 2) {
                       // Misal kategori 2: Minuman
-                      echo '<span class="badge badge-primary rounded-pill d-inline"><i class="bx bx-coffee"></i> Minuman</span>';
+                       echo '
+                        <span class="badge bg-label-primary"> <i class="menu-icon tf-icons bx bx-laptop mx-auto"></i></span>';
                     } else {
                       // Kategori lain
                       echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
