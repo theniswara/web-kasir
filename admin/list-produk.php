@@ -47,7 +47,7 @@ include('includes/header.php');
                     <img
                         src="assets/img/produk/<?= $row['gambar'] ?>"
                         alt=""
-                        style="width: 80px; height: 80px background-size: cover"
+                        style="width: 80px; height: 80px; object-fit: cover;"
                         class="rounded  mx-auto d-block"
                         />
                   </div>

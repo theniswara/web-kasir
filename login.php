@@ -88,7 +88,9 @@ include('includes/header.php');
                     id="username"
                     name="username"
                     placeholder="Masukkan username"
-                    autofocus />
+                    autofocus 
+                    required
+                    />
                 </div>
                 <div class="mb-6 form-password-toggle">
                   <label class="form-label" for="password">Password</label>
@@ -99,7 +101,9 @@ include('includes/header.php');
                       class="form-control"
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password" />
+                      aria-describedby="password" 
+                      required
+                      />
                     <span class="input-group-text cursor-pointer"><i class="icon-base bx bx-hide"></i></span>
                   </div>
                 </div>
