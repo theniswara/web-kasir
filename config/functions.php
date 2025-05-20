@@ -89,4 +89,31 @@ function hapus($id) {
   return mysqli_affected_rows($conn);
 }
 
+// function ubah
+function edit($data) {
+    global $conn;
+    
+  $id_produk = $data["id_produk"];
+  $nama_produk = htmlspecialchars($data ["nama_produk"]);
+  $id_kategori = htmlspecialchars($data["id_kategori"]);
+  $harga = htmlspecialchars($data["harga"]);
+  $gambar = htmlspecialchars($data["gambar"]);
+  $id_merek = htmlspecialchars($data["id_merek"]);
+
+  // query insert data
+$query = "UPDATE produk
+          SET
+          nama_produk = '$nama_produk',
+          id_kategori = '$id_kategori',
+          harga = '$harga',
+          gambar = '$gambar',
+          id_merek = '$id_merek'
+          WHERE id_produk = $id_produk
+          ";
+  mysqli_query($conn, $query);
+
+  return mysqli_affected_rows($conn); 
+
+}
+
 ?>
