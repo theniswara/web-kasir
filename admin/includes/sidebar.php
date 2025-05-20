@@ -33,7 +33,7 @@
             <!-- Dashboards -->
             <li class="menu-item active">
               <a href="index.php" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                <i class="menu-icon tf-icons bx bx-home"></i>
                 <div class="text-truncate" data-i18n="Dashboards">Dashboards</div>
               </a>
             </li>
