@@ -77,7 +77,7 @@ include('includes/header.php');
                   </td>
                   <td>
                     <div class="d-flex justify-content-center gap-2">
-                      <a href="edit-produk.php" class="btn btn-success btn-sm btn-rounded" title="Edit">
+                      <a href="edit-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
                         <i class="bx bx-edit"></i>
                       </a>
                       <a href="../config/hapus.php?id=<?= $row["id_produk"] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
