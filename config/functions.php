@@ -116,4 +116,13 @@ $query = "UPDATE produk
 
 }
 
+// function cari
+    function cari($keyword) {
+      $query = "SELECT * FROM produk 
+                  WHERE 
+                nama_produk LIKE '%$keyword%'
+      ";
+      return query($query);
+    }
+
 ?>

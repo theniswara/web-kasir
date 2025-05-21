@@ -1,36 +1,16 @@
-<?php
-session_start();
-require '../config/functions.php';
-$produk = query("SELECT * FROM produk");
+<?php 
 
+require '/xampp/htdocs/COLLEGE/uas_sm2/web-kasir/config/functions.php';
+$keyword = $_GET['keyword'];
 
-if (!isset($_SESSION["login"])) { // jika tdak ada session login 
-  header("Location: ../login.php"); // Kembali ke hlm login
-  exit;
-}
-
-  // tombol cari ditekan
-  if( isset($_POST["cari"]) ) {
-    $books = cari($_POST["keyword"]);
-  }
-
-
-include('includes/header.php'); 
+$query = "SELECT * FROM produk 
+            WHERE 
+          nama_produk LIKE '%$keyword%'
+      ";
+$produk = query($query); 
 ?>
 
-
-<!-- Content wrapper -->
-<div class="content-wrapper">
-   <div class="container-xxl flex-grow-1 container-p-y">
-    <!-- Basic Bootstrap Table -->
-    <div class="card">
-      <h4 class="card-header fw-bold">Produk
-        <a href="tambah-produk.php" class="btn btn-primary float-end">
-          <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Produk
-        </a>
-      </h4>
-      <div class="table-responsive text-nowrap" id="container">
-        <table class="table table-bordered">
+  <table class="table table-bordered">
           <thead class="fw-bold">
             <tr>
                 <th>No</th>
@@ -96,37 +76,3 @@ include('includes/header.php');
               <?php endforeach; ?>
             </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-  <!--/ Basic Bootstrap Table -->
-
-<script src="assets/js/script.js"></script>
-  
-<script>
-  // Sidebar active tab logic for List Produk
-  document.addEventListener('DOMContentLoaded', function() {
-    var sidebarLink = document.querySelector('a[href="list-produk.php"]');
-    if (sidebarLink) {
-      // Remove 'active' from all menu-item
-      document.querySelectorAll('.menu-item').forEach(function(item) {
-        item.classList.remove('active');
-      });
-      // Add 'active' to the parent .menu-item of the current link
-      var parentMenuItem = sidebarLink.closest('.menu-item');
-      if (parentMenuItem) {
-        parentMenuItem.classList.add('active');
-        // If inside submenu, also open parent and set parent as active
-        var parentMenuToggle = parentMenuItem.closest('.menu-sub');
-        if (parentMenuToggle) {
-          var parentToggleItem = parentMenuToggle.closest('.menu-item');
-          if (parentToggleItem) {
-            parentToggleItem.classList.add('open', 'active');
-          }
-        }
-      }
-    }
-  });
-</script>
-
-<?php include('includes/footer.php'); ?>
