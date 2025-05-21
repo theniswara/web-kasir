@@ -7,7 +7,7 @@ $produk = query("SELECT * FROM produk");
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
   exit;
-}
+} 
 
   // tombol cari ditekan
   if( isset($_POST["cari"]) ) {
@@ -83,9 +83,25 @@ include('includes/header.php');
                     <span class="fw-semibold text-dark">
                       <?php 
                       if ($row['id_merek'] == 1) {
-                        echo '<i class="menu-icon tf-icons bx-samsung mx-auto"></i> Samsung';
-                      } elseif ($row['id_merek'] == 2) {
+                        echo 'Samsung';
+                      } else if ($row['id_merek'] == 2) {
                         echo 'Apple';
+                      } else if ($row['id_merek'] == 3) {
+                        echo 'Asus';
+                      } else if ($row['id_merek'] == 4) {
+                        echo 'Lenovo';
+                      } else if ($row['id_merek'] == 5) {
+                        echo 'Xiaomi';
+                      } else if ($row['id_merek'] == 6) {
+                        echo 'HP';
+                      } else if ($row['id_merek'] == 7) {
+                        echo 'Realme';
+                      } else if ($row['id_merek'] == 8) {
+                        echo 'Infinix';
+                      } else if ($row['id_merek'] == 9) {
+                        echo 'Acer';
+                      } else if ($row['id_merek'] == 10) {
+                        echo 'OPPO'; 
                       } else {
                         echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                       } ?></span>
