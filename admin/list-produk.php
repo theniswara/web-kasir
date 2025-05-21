@@ -37,6 +37,7 @@ include('includes/header.php');
                 <th>Gambar</th>
                 <th>Nama Produk</th>
                 <th>Kategori</th>
+                <th>Merek</th>
                 <th>Harga</th>
                 <th>Actions</th>
               </tr>
@@ -77,6 +78,17 @@ include('includes/header.php');
                         echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                       }
                     ?>
+                  </td>
+                    <td class="align-middle">
+                    <span class="fw-semibold text-dark">
+                      <?php 
+                      if ($row['id_merek'] == 1) {
+                        echo '<i class="menu-icon tf-icons bx-samsung mx-auto"></i> Samsung';
+                      } elseif ($row['id_merek'] == 2) {
+                        echo 'Apple';
+                      } else {
+                        echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
+                      } ?></span>
                   </td>
                   <td class="align-middle text-end">
                     <span class="fw-bold"">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>
