@@ -70,8 +70,13 @@ function tambah($data) {
   $nama_produk = htmlspecialchars($data ["nama_produk"]);
   $id_kategori = htmlspecialchars($data["id_kategori"]);
   $harga = htmlspecialchars($data["harga"]);
-  $gambar = htmlspecialchars($data["gambar"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
+
+  // upload gambar
+  $gambar = upload();
+  if (!$gambar) {
+    return false;
+  }
 
   // query insert data
 $query = "INSERT INTO produk 
@@ -80,6 +85,54 @@ $query = "INSERT INTO produk
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn); 
+
+}
+
+// function upload
+function upload() {
+  $namaFile = $_FILES['gambar']['name'];
+  $ukuranFile = $_FILES['gambar']['size'];
+  $error = $_FILES['gambar']['error'];
+  $tmpName = $_FILES['gambar']['tmp_name'];
+
+  // cek apakah adakah ada / tidak gambat yg diupload
+  if( $error === 4 ) {
+    echo "<script>
+          alert('Pilih gambar!');
+          </script>
+          ";
+    return false;
+  }
+
+  // Cek apakah yang diupload adalah gambar
+  $ekstensiValid  = ['jpg', 'jpeg', 'png'];
+  $ekstensiGambar = explode('.', $namaFile);
+  $ekstensiGambar = strtolower(end($ekstensiGambar));
+  if (!in_array($ekstensiGambar, $ekstensiValid)) {
+      echo "<script>
+          alert('Yang anda upload bukan gambar!');
+          </script>";
+    return false;
+  }
+
+  // cek jika ukurannya terlalu besar
+  if ($ukuranFile > 10000000) {
+        echo "<script>
+          alert('Ukuran Gambar terlalu besar!');
+          </script>";
+    return false;
+  }
+
+  // lolos pengecekan, gambar siap diupload
+  // generate nama file baru
+  $namaFileBaru = uniqid();
+  $namaFileBaru .= '.';
+  $namaFileBaru .= $ekstensiGambar;
+
+
+  move_uploaded_file($tmpName, './assets/img/produk/' . $namaFileBaru);
+
+  return $namaFileBaru;
 
 }
 

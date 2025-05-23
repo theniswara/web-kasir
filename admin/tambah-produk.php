@@ -46,7 +46,7 @@ include('includes/header.php');
           <h4 class="mb-0 fw-bold">Tambah Produk</h4>
         </div>
         <div class="card-body">
-          <form method="post" action="">
+          <form method="post" action="" enctype="multipart/form-data">
             <div class="mb-4">
               <label for="nama_produk" class="form-label">Nama Produk</label>
               <input type="text" name="nama_produk" id="nama_produk" class="form-control" autofocus required>
@@ -79,7 +79,7 @@ include('includes/header.php');
             </div>
             <div class="mb-4">
               <label class="form-label">Gambar Produk</label>
-              <input type="text" name="gambar" class="form-control" required>
+              <input type="file" name="gambar" class="form-control" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
