@@ -67,8 +67,6 @@
       include('sidebar.php');
     ?>
 
-    <?php 
-      include('navbar.php');
-    ?>
+  <div class="layout-page">
 
 
