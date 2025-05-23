@@ -150,8 +150,16 @@ function edit($data) {
   $nama_produk = htmlspecialchars($data ["nama_produk"]);
   $id_kategori = htmlspecialchars($data["id_kategori"]);
   $harga = htmlspecialchars($data["harga"]);
-  $gambar = htmlspecialchars($data["gambar"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
+  $gambarLama = htmlspecialchars($data["gambarLama"]);
+
+  // cek apakah user pilih gambar baru / tidak
+  if ($_FILES['gambar']['error'] === 4) {
+    $gambar = $gambarLama;
+  } else {
+  $gambar = upload();
+  }
+
 
   // query insert data
 $query = "UPDATE produk

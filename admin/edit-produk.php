@@ -49,8 +49,9 @@ include('includes/header.php');
           <h4 class="mb-0 fw-bold">Edit Produk</h4>
         </div>
         <div class="card-body">
-          <form method="post" action="">
+          <form method="post" action="" enctype="multipart/form-data">
             <input type="hidden" name="id_produk" value="<?= $produk["id_produk"];?>">
+            <input type="hidden" name="gambarLama" value="<?= $produk["gambar"];?>">
             <div class="mb-4">
               <label for="nama_produk" class="form-label">Nama Produk</label>
               <input type="text" name="nama_produk" id="nama_produk" class="form-control" value="<?= $produk["nama_produk"]; ?>" autofocus required>
@@ -83,7 +84,10 @@ include('includes/header.php');
             </div>
             <div class="mb-4">
               <label class="form-label">Gambar Produk</label>
-              <input type="text" name="gambar" class="form-control" value="<?= $produk["gambar"]; ?>" required>
+              <div class="card" style="width: 10rem;">
+                <img src="./assets/img/produk/<?= $produk['gambar'] ?>" class="card-img-top" alt="...">
+              </div>
+              <input type="file" name="gambar" class="form-control">
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
