@@ -129,4 +129,31 @@ include('includes/header.php');
               </div>
               <!--/ Basic Bootstrap Table -->
 
+<script>
+  // Sidebar active tab logic for List Produk
+  document.addEventListener('DOMContentLoaded', function() {
+    var sidebarLink = document.querySelector('a[href="buat-pesanan.php"]');
+    if (sidebarLink) {
+      // Remove 'active' from all menu-item
+      document.querySelectorAll('.menu-item').forEach(function(item) {
+        item.classList.remove('active');
+      });
+      // Add 'active' to the parent .menu-item of the current link
+      var parentMenuItem = sidebarLink.closest('.menu-item');
+      if (parentMenuItem) {
+        parentMenuItem.classList.add('active');
+        // If inside submenu, also open parent and set parent as active
+        var parentMenuToggle = parentMenuItem.closest('.menu-sub');
+        if (parentMenuToggle) {
+          var parentToggleItem = parentMenuToggle.closest('.menu-item');
+          if (parentToggleItem) {
+            parentToggleItem.classList.add('open', 'active');
+          }
+        }
+      }
+    }
+  });
+</script>
+
+
 <?php include('includes/footer.php'); ?>
