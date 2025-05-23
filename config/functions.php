@@ -105,7 +105,7 @@ function upload() {
   }
 
   // Cek apakah yang diupload adalah gambar
-  $ekstensiValid  = ['jpg', 'jpeg', 'png'];
+  $ekstensiValid  = ['jpg', 'jpeg', 'png', 'webp'];
   $ekstensiGambar = explode('.', $namaFile);
   $ekstensiGambar = strtolower(end($ekstensiGambar));
   if (!in_array($ekstensiGambar, $ekstensiValid)) {
