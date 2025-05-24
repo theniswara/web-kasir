@@ -1,21 +1,23 @@
-<?php 
+<?php
 // Koneksi ke database
 $conn = mysqli_connect("localhost", "root", "", "toko_gadget");
 
 
 
-function query($query) {
+function query($query)
+{
   global $conn;
   $result = mysqli_query($conn, $query);
   $rows = []; // Kotak kosong untuk menampung data
-  while( $row = mysqli_fetch_assoc($result) ) {
+  while ($row = mysqli_fetch_assoc($result)) {
     $rows[] = $row; // Menampung data ke dalam kotak
   }
   return $rows;
 }
 
 // Function registrasi
-function registrasi($data){
+function registrasi($data)
+{
   // konek ke database
   global $conn;
 
@@ -25,30 +27,30 @@ function registrasi($data){
   $username = strtolower(stripslashes($data["username"]));
 
   // Memungkinkan user memasukan tanda kutip
-	$password = mysqli_real_escape_string($conn, $data["password"]);
-	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+  $password = mysqli_real_escape_string($conn, $data["password"]);
+  $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
-//     // Mengatasi sring kosong
-//   if (empty(trim($username))) {
-//     return false;
-// } 
+  //     // Mengatasi sring kosong
+  //   if (empty(trim($username))) {
+  //     return false;
+  // } 
 
   // Cek username sudah ada / belum
   $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
 
-  if(mysqli_fetch_assoc($result)) {
+  if (mysqli_fetch_assoc($result)) {
     echo "<script>
             alert('Username sudah terdaftar')
           </script>";
-      return false;
+    return false;
   }
 
   // Konfirmasi password
-  if($password != $password2) {
+  if ($password != $password2) {
     echo "<script>
             alert('konfirmasi password tidak sesuai')
           </script>";
-          return false;
+    return false;
   }
 
   // enkripsi password
@@ -59,15 +61,14 @@ function registrasi($data){
 
   // Menghasilkan 1 jika berhasil -1 jika gagal
   return mysqli_affected_rows($conn);
-
-
 }
 
 // Function tambah produk
-function tambah($data) {
+function tambah($data)
+{
   global $conn;
 
-  $nama_produk = htmlspecialchars($data ["nama_produk"]);
+  $nama_produk = htmlspecialchars($data["nama_produk"]);
   $id_kategori = htmlspecialchars($data["id_kategori"]);
   $harga = htmlspecialchars($data["harga"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
@@ -79,24 +80,24 @@ function tambah($data) {
   }
 
   // query insert data
-$query = "INSERT INTO produk 
+  $query = "INSERT INTO produk 
           VALUES
           ('', '$gambar', '$nama_produk', '1', '$harga', '$id_kategori', '$id_merek')";
   mysqli_query($conn, $query);
 
-  return mysqli_affected_rows($conn); 
-
+  return mysqli_affected_rows($conn);
 }
 
 // function upload
-function upload() {
+function upload()
+{
   $namaFile = $_FILES['gambar']['name'];
   $ukuranFile = $_FILES['gambar']['size'];
   $error = $_FILES['gambar']['error'];
   $tmpName = $_FILES['gambar']['tmp_name'];
 
   // cek apakah adakah ada / tidak gambat yg diupload
-  if( $error === 4 ) {
+  if ($error === 4) {
     echo "<script>
           alert('Pilih gambar!');
           </script>
@@ -109,7 +110,7 @@ function upload() {
   $ekstensiGambar = explode('.', $namaFile);
   $ekstensiGambar = strtolower(end($ekstensiGambar));
   if (!in_array($ekstensiGambar, $ekstensiValid)) {
-      echo "<script>
+    echo "<script>
           alert('Yang anda upload bukan gambar!');
           </script>";
     return false;
@@ -117,7 +118,7 @@ function upload() {
 
   // cek jika ukurannya terlalu besar
   if ($ukuranFile > 10000000) {
-        echo "<script>
+    echo "<script>
           alert('Ukuran Gambar terlalu besar!');
           </script>";
     return false;
@@ -133,17 +134,22 @@ function upload() {
   move_uploaded_file($tmpName, './assets/img/produk/' . $namaFileBaru);
 
   return $namaFileBaru;
-
 }
 
-
+function hapus($id)
+{
+  global $conn;
+  mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id");
+  return mysqli_affected_rows($conn);
+}
 
 // function ubah
-function edit($data) {
-    global $conn;
-    
+function edit($data)
+{
+  global $conn;
+
   $id_produk = $data["id_produk"];
-  $nama_produk = htmlspecialchars($data ["nama_produk"]);
+  $nama_produk = htmlspecialchars($data["nama_produk"]);
   $id_kategori = htmlspecialchars($data["id_kategori"]);
   $harga = htmlspecialchars($data["harga"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
@@ -153,12 +159,12 @@ function edit($data) {
   if ($_FILES['gambar']['error'] === 4) {
     $gambar = $gambarLama;
   } else {
-  $gambar = upload();
+    $gambar = upload();
   }
 
 
   // query insert data
-$query = "UPDATE produk
+  $query = "UPDATE produk
           SET
           nama_produk = '$nama_produk',
           id_kategori = '$id_kategori',
@@ -169,17 +175,15 @@ $query = "UPDATE produk
           ";
   mysqli_query($conn, $query);
 
-  return mysqli_affected_rows($conn); 
-
+  return mysqli_affected_rows($conn);
 }
 
 // function cari
-    function cari($keyword) {
-      $query = "SELECT * FROM produk 
+function cari($keyword)
+{
+  $query = "SELECT * FROM produk 
                   WHERE 
                 nama_produk LIKE '%$keyword%'
       ";
-      return query($query);
-    }
-
-?>
+  return query($query);
+}

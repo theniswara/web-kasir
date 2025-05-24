@@ -1,12 +1,13 @@
 <?php
 session_start();
-require '/xampp/htdocs/COLLEGE/uas_sm2/web-kasir/config/functons-customer.php';
-$customer = query("SELECT * FROM customer");
+require_once '../config/functions.php';
 
-if (!isset($_SESSION["login"])) { // jika tdak ada session login 
-  header("Location: ../login.php"); // Kembali ke hlm login
+if (!isset($_SESSION["login"])) {
+  header("Location: ../login.php");
   exit;
 }
+
+$customer = mysqli_query($conn, "SELECT * FROM customer");
 
 include('includes/header.php');
 ?>
@@ -106,9 +107,8 @@ include('includes/header.php');
     <!-- Basic Bootstrap Table -->
     <div class="card">
       <h4 class="card-header fw-bold">Pelanggan
-          <a href="tambah-pelanggan.php" class="btn btn-primary float-end">
-            <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Pelanggan
-        </button>
+        <a href="tambah-pelanggan.php" class="btn btn-primary float-end">
+          <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Pelanggan
         </a>
       </h4>
       <div class="table-responsive text-nowrap">
@@ -124,31 +124,31 @@ include('includes/header.php');
           </thead>
           <tbody class="table-border-bottom-0">
             <?php $i = 1; ?>
-            <?php foreach ($customer as $row) : ?>
+            <?php while ($row = mysqli_fetch_assoc($customer)) : ?>
               <tr>
                 <td class="text-center"><?= $i ?></td>
                 <td>
                   <span class="fw-semibold text-dark"><?= htmlspecialchars($row['nama']) ?></span>
                 </td>
                 <td>
-                  <span class=" text-dark"><?= htmlspecialchars($row['no_hp']) ?></span>
+                  <span class="text-dark"><?= htmlspecialchars($row['no_hp']) ?></span>
                 </td>
                 <td>
                   <span class="text-dark"><?= htmlspecialchars($row['email']) ?></span>
                 </td>
                 <td>
                   <div class="d-flex justify-content-center gap-2">
-                    <a href="edit-pelanggan.php?id=<?= $row["id_customer"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
+                    <a href="edit-pelanggan.php?id=<?= $row['id_customer'] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
                       <i class="bx bx-edit"></i>
                     </a>
-                    <a href="../config/hapus-customer.php?id=<?= $row["id_customer"] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
+                    <a href="hapus-pelanggan.php?id=<?= $row['id_customer'] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus pelanggan ini?');">
                       <i class="bx bx-trash"></i>
                     </a>
                   </div>
                 </td>
               </tr>
-              <?php $i++ ?>
-            <?php endforeach; ?>
+              <?php $i++; ?>
+            <?php endwhile; ?>
             </tr>
           </tbody>
         </table>
