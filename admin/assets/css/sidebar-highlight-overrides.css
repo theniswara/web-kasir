@@ -1,7 +1,7 @@
 /* Only highlight .active, not .open */
 .menu-item.active > .menu-link {
-  background-color: #ff9800 !important;
-  color: #fff !important;
+  background-color: #ffebcb !important;
+  color: #FF8C00 !important;
 }
 
 .menu-item.open:not(.active) > .menu-link {
