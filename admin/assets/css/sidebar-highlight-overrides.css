@@ -1,9 +1,14 @@
-.menu-item.active > .menu-link,
-.menu-item.open > .menu-link {
-  background-color: #fdedce !important; /* Light orange highlight, adjust as needed */
-  color: #ff8c00 !important;
-  border-radius: 6px;
+/* Only highlight .active, not .open */
+.menu-item.active > .menu-link {
+  background-color: #ff9800 !important;
+  color: #fff !important;
 }
+
+.menu-item.open:not(.active) > .menu-link {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
 .menu-item.open .menu-sub .menu-item > .menu-link {
   background-color: transparent !important;
   color: inherit !important;

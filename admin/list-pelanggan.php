@@ -82,7 +82,7 @@ include('includes/header.php');
 <script>
   // Sidebar active tab logic for List Produk
   document.addEventListener('DOMContentLoaded', function() {
-    var sidebarLink = document.querySelector('a[href="buat-pesanan.php"]');
+    var sidebarLink = document.querySelector('a[href="list-pelanggan.php"]');
     if (sidebarLink) {
       // Remove 'active' from all menu-item
       document.querySelectorAll('.menu-item').forEach(function(item) {

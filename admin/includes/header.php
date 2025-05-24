@@ -63,6 +63,9 @@
 
   
 
+    <?php 
+      include('sidebar.php');
+    ?>
 
   <div class="layout-page">
 
