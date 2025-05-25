@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require '../config/functions.php';
+require '../config/functions-produk.php';
 
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
@@ -11,7 +11,7 @@ if (!isset($_SESSION["login"])) { // jika tdak ada session login
 if (isset($_POST["submit"])) {
   
   // Cek apakah data berhasil ditambahkan
-  if ( tambah($_POST) > 0) {
+  if ( tambahProduk($_POST) > 0) {
     echo "<script>
             alert('Data berhasil ditambahkan')
             document.location.href = 'list-produk.php'

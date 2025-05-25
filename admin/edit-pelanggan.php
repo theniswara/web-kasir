@@ -1,9 +1,32 @@
 <?php
 session_start();
+require '../config/functions-pelanggan.php';
+
+//  ambil data di url
+$id = $_GET["id"];
+// query data produk berdasarkan id
+$customer = query("SELECT * FROM customer WHERE id_customer = $id")[0];
 
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
   exit;
+}
+
+// Cek apakah tombol submit sudah ditekan
+if (isset($_POST["submit"])) {
+
+  // Cek apakah data berhasil diedit
+  if (editPelanggan($_POST) > 0) {
+    echo "<script>
+            alert('Data berhasil diedit')
+            document.location.href = 'list-pelanggan.php'
+          </script>";
+  } else {
+    echo "<script>
+            alert('Data gagal diedit')
+            document.location.href = 'list-pelanggan.php'
+          </script>";
+  }
 }
 
 include('includes/header.php');
@@ -107,18 +130,18 @@ include('includes/header.php');
           <small class="text-body float-end">Pelanggan/Cusomer</small>
         </div>
         <div class="card-body">
-          <form>
+          <form method="post" action="">
+            <input type="hidden" name="id_customer" value="<?= $customer["id_customer"]; ?>">
             <div class="mb-6">
               <label class="form-label" for="basic-icon-default-fullname">Nama</label>
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="icon-base bx bx-user"></i></span>
                 <input
                   type="text"
+                  name="nama"
                   class="form-control"
-                  id="basic-icon-default-fullname"
-                  placeholder="Masukkan nama lengkap..."
-                  aria-label="Masukkan nama lengkap..."
-                  aria-describedby="basic-icon-default-fullname2" />
+                  id="nama"
+                  class="form-control" value="<?= $customer["nama"]; ?>" autofocus required>/>
               </div>
             </div>
             <div class="mb-6">
@@ -127,27 +150,25 @@ include('includes/header.php');
                 <span class="input-group-text"><i class="icon-base bx bx-envelope"></i></span>
                 <input
                   type="email"
+                  name="email"
                   id="basic-icon-default-email"
                   class="form-control"
-                  placeholder="user@email.com"
-                  aria-label="user@email.com"
-                  aria-describedby="basic-icon-default-email2" />
+                  id="email" class="form-control" value="<?= $customer["email"]; ?>" autofocus required>/>
               </div>
-            </div>  
+            </div>
             <div class="mb-6">
               <label class="form-label" for="basic-icon-default-phone">No Telepon</label>
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-phone2" class="input-group-text"><i class="icon-base bx bx-phone"></i></span>
                 <input
                   type="text"
+                  name="no_hp"
                   id="basic-icon-default-phone"
                   class="form-control phone-mask"
-                  placeholder="658 799 8941"
-                  aria-label="658 799 8941"
-                  aria-describedby="basic-icon-default-phone2" />
+                  class="form-control" value="<?= $customer["no_hp"]; ?>" autofocus required> />
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
         </div>
       </div>

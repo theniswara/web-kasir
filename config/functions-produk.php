@@ -15,56 +15,10 @@ function query($query)
   return $rows;
 }
 
-// Function registrasi
-function registrasi($data)
-{
-  // konek ke database
-  global $conn;
 
-
-  // stripslashes = membersihkan username 
-  // Memaksa agar input menjadi huruf kecil
-  $username = strtolower(stripslashes($data["username"]));
-
-  // Memungkinkan user memasukan tanda kutip
-  $password = mysqli_real_escape_string($conn, $data["password"]);
-  $password2 = mysqli_real_escape_string($conn, $data["password2"]);
-
-  //     // Mengatasi sring kosong
-  //   if (empty(trim($username))) {
-  //     return false;
-  // } 
-
-  // Cek username sudah ada / belum
-  $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
-
-  if (mysqli_fetch_assoc($result)) {
-    echo "<script>
-            alert('Username sudah terdaftar')
-          </script>";
-    return false;
-  }
-
-  // Konfirmasi password
-  if ($password != $password2) {
-    echo "<script>
-            alert('konfirmasi password tidak sesuai')
-          </script>";
-    return false;
-  }
-
-  // enkripsi password
-  $password = password_hash($password, PASSWORD_DEFAULT);
-
-  // Tambahkan user baru ke database
-  mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password', '')");
-
-  // Menghasilkan 1 jika berhasil -1 jika gagal
-  return mysqli_affected_rows($conn);
-}
 
 // Function tambah produk
-function tambah($data)
+function tambahProduk($data)
 {
   global $conn;
 
@@ -79,7 +33,7 @@ function tambah($data)
     return false;
   }
 
-  // query insert data
+  // query insert data Produk
   $query = "INSERT INTO produk 
           VALUES
           ('', '$gambar', '$nama_produk', '1', '$harga', '$id_kategori', '$id_merek')";
@@ -136,7 +90,7 @@ function upload()
   return $namaFileBaru;
 }
 
-function hapus($id)
+function hapusProduk($id)
 {
   global $conn;
   mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id");
@@ -144,7 +98,7 @@ function hapus($id)
 }
 
 // function ubah
-function edit($data)
+function editProduk($data)
 {
   global $conn;
 

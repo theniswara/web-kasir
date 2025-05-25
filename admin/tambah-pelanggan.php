@@ -1,9 +1,31 @@
 <?php
 session_start();
+require '../config/functions-pelanggan.php';
 
 if (!isset($_SESSION["login"])) { // jika tdak ada session login 
   header("Location: ../login.php"); // Kembali ke hlm login
   exit;
+}
+
+// Cek apakah tombol submit sudah ditekan
+if (isset($_POST["submit"])) {
+  
+  // Cek apakah data berhasil ditambahkan
+  if ( tambahPelanggan($_POST) > 0) {
+    echo "<script>
+            alert('Data berhasil ditambahkan')
+            document.location.href = 'list-pelanggan.php'
+          </script>";
+  } else {
+    echo "<script>
+            alert('Data gagal ditambahkan')
+            document.location.href = 'list-pelanggan.php'
+          </script>";
+  }
+
+
+  // cek apakah data berhasil ditambahkan
+  var_dump(mysqli_affected_rows($conn));
 }
 
 include('includes/header.php');
@@ -107,7 +129,7 @@ include('includes/header.php');
           <small class="text-body float-end">Pelanggan/Cusomer</small>
         </div>
         <div class="card-body">
-          <form>
+          <form method="post" action="">
             <div class="mb-6">
               <label class="form-label" for="basic-icon-default-fullname">Nama</label>
               <div class="input-group input-group-merge">
@@ -115,10 +137,10 @@ include('includes/header.php');
                 <input
                   type="text"
                   class="form-control"
-                  id="basic-icon-default-fullname"
+                  name="nama"
+                  id="nama"
                   placeholder="Masukkan nama lengkap..."
-                  aria-label="Masukkan nama lengkap..."
-                  aria-describedby="basic-icon-default-fullname2" />
+                  aria-describedby="basic-icon-default-fullname2" autofocus required/>
               </div>
             </div>
             <div class="mb-6">
@@ -127,11 +149,12 @@ include('includes/header.php');
                 <span class="input-group-text"><i class="icon-base bx bx-envelope"></i></span>
                 <input
                   type="email"
-                  id="basic-icon-default-email"
+                  id="email"
+                  name="email"
                   class="form-control"
                   placeholder="user@email.com"
                   aria-label="user@email.com"
-                  aria-describedby="basic-icon-default-email2" />
+                  aria-describedby="basic-icon-default-email2" required/>
               </div>
             </div>  
             <div class="mb-6">
@@ -140,14 +163,15 @@ include('includes/header.php');
                 <span id="basic-icon-default-phone2" class="input-group-text"><i class="icon-base bx bx-phone"></i></span>
                 <input
                   type="text"
-                  id="basic-icon-default-phone"
+                  id="no_hp"
+                  name="no_hp"
                   class="form-control phone-mask"
                   placeholder="658 799 8941"
                   aria-label="658 799 8941"
-                  aria-describedby="basic-icon-default-phone2" />
+                  aria-describedby="basic-icon-default-phone2" required/>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
         </div>
       </div>

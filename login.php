@@ -6,7 +6,7 @@ if(isset($_SESSION["login"])) {
   exit;
 }
 
-require 'config/functions.php';
+require 'config/auth.php';
 
 // Cek apakah tombol login sudah ditekan 
 // Form menggunakan method post

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require '../config/functions.php';
+require '../config/functions-produk.php';
 
 //  ambil data di url
 $id = $_GET["id"];
@@ -16,7 +16,7 @@ if (!isset($_SESSION["login"])) { // jika tdak ada session login
 if (isset($_POST["submit"])) {
   
   // Cek apakah data berhasil diedit
-  if ( edit($_POST) > 0) {
+  if ( editProduk($_POST) > 0) {
     echo "<script>
             alert('Data berhasil diedit')
             document.location.href = 'list-produk.php'

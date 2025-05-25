@@ -1,6 +1,8 @@
 <?php
 session_start();
-require_once '../config/functions.php';
+require '../config/functions-pelanggan.php';
+  $cutomer = query("SELECT * FROM customer");
+
 
 if (!isset($_SESSION["login"])) {
   header("Location: ../login.php");
@@ -141,7 +143,7 @@ include('includes/header.php');
                     <a href="edit-pelanggan.php?id=<?= $row['id_customer'] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
                       <i class="bx bx-edit"></i>
                     </a>
-                    <a href="hapus-pelanggan.php?id=<?= $row['id_customer'] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus pelanggan ini?');">
+                    <a href="../config/hapus-pelanggan.php?id=<?= $row['id_customer'] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus pelanggan ini?');">
                       <i class="bx bx-trash"></i>
                     </a>
                   </div>

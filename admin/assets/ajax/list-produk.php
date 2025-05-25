@@ -1,6 +1,6 @@
 <?php 
 
-require '/xampp/htdocs/COLLEGE/uas_sm2/web-kasir/config/functions.php';
+require '/xampp/htdocs/COLLEGE/uas_sm2/web-kasir/config/functions-produk.php';
 $keyword = $_GET['keyword'];
 
 $query = "SELECT * FROM produk 

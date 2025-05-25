@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/functions.php';
+require '../config/functions-produk.php';
 $produk = query("SELECT * FROM produk");
 
 
