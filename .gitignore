@@ -1,0 +1,22 @@
+# Ignore sensitive config (jika tidak ingin dishare ke repo)
+config/dbcon.php
+
+# Ignore file upload dan hasil generate
+admin/assets/img/produk/
+
+# Ignore file/folder sistem/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ignore dependency manager (jika pakai composer/npm)
+node_modules/
+vendor/
+
+# Ignore log dan cache
+*.log
+cache/
+
+# Ignore SQL backup (jika tidak ingin dishare)
+sql/
