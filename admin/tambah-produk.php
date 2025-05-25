@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require '../config/functions-produk.php';
 
@@ -9,9 +9,9 @@ if (!isset($_SESSION["login"])) { // jika tdak ada session login
 
 // Cek apakah tombol submit sudah ditekan
 if (isset($_POST["submit"])) {
-  
+
   // Cek apakah data berhasil ditambahkan
-  if ( tambahProduk($_POST) > 0) {
+  if (tambahProduk($_POST) > 0) {
     echo "<script>
             alert('Data berhasil ditambahkan')
             document.location.href = 'list-produk.php'
@@ -35,7 +35,7 @@ $merek = query("SELECT * FROM merek");
 
 
 
-include('includes/header.php'); 
+include('includes/header.php');
 ?>
 
 <nav
@@ -142,8 +142,8 @@ include('includes/header.php');
             <div class="mb-4">
               <label class="form-label">Kategori</label>
               <select name="id_kategori" class="form-control" required>
-                <option value="">Pilih Kategori</option>
-                <?php foreach($kategori as $k): ?>
+                <option selected>Pilih Kategori</option>
+                <?php foreach ($kategori as $k): ?>
                   <option value="<?= $k['id_kategori'] ?>"><?= $k['nama_kategori'] ?></option>
                 <?php endforeach; ?>
               </select>
@@ -152,7 +152,7 @@ include('includes/header.php');
               <label class="form-label">Merek</label>
               <select name="id_merek" class="form-control" required>
                 <option value="">Pilih Merek</option>
-                <?php foreach($merek as $m): ?>
+                <?php foreach ($merek as $m): ?>
                   <option value="<?= $m['id_merek'] ?>"><?= $m['nama'] ?></option>
                 <?php endforeach; ?>
               </select>
@@ -160,9 +160,9 @@ include('includes/header.php');
             <div class="mb-4">
               <label class="form-label">Harga</label>
               <div class="input-group mb-3">
-              <span class="input-group-text">Rp.</span>
+                <span class="input-group-text">Rp.</span>
 
-              <input type="number" name="harga" class="form-control" required>
+                <input type="number" name="harga" class="form-control" required>
               </div>
             </div>
             <div class="mb-4">
