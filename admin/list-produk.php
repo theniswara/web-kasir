@@ -195,6 +195,8 @@ include('includes/header.php');
                       echo 'Acer';
                     } else if ($row['id_merek'] == 10) {
                       echo 'OPPO';
+                    } else if ($row['id_merek'] == 11) {
+                      echo 'Nokia';
                     } else {
                       echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                     } ?></span>

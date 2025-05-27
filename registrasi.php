@@ -1,6 +1,6 @@
 <?php 
 
-require 'config/functions.php';
+require 'config/auth.php';
 
 # Kalau tombol register ditekan
 if(isset($_POST["register"])) {
@@ -9,12 +9,17 @@ if(isset($_POST["register"])) {
   if(registrasi($_POST) > 0 ) {
     // Kasih pop up
     echo "<script>
-            alert('User baru berhasil ditambahkan')
+            alert('User baru berhasil ditambahkan, silahkan Login!')
           </script>";
+
+ 
   }else {
     echo mysqli_error($conn);
   }
+
 }
+
+
 
 ?>
 

@@ -1,19 +1,5 @@
 <?php
-// Koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "toko_gadget");
-
-
-
-function query($query)
-{
-  global $conn;
-  $result = mysqli_query($conn, $query);
-  $rows = []; // Kotak kosong untuk menampung data
-  while ($row = mysqli_fetch_assoc($result)) {
-    $rows[] = $row; // Menampung data ke dalam kotak
-  }
-  return $rows;
-}
+include 'dbcon.php';
 
 // Function tambah produk
 function tambahPelanggan($data)
@@ -65,12 +51,4 @@ function editPelanggan($data)
   return mysqli_affected_rows($conn);
 }
 
-// function cari
-function cari($keyword)
-{
-  $query = "SELECT * FROM customer 
-                  WHERE 
-                nama LIKE '%$keyword%'
-      ";
-  return query($query);
-}
+// Hapus function cari() di sini, gunakan yang dari functions-produk.php saja
