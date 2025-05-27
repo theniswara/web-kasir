@@ -1,8 +1,6 @@
 <?php
 session_start();
 require '../config/functions-pelanggan.php';
-  $cutomer = query("SELECT * FROM customer");
-
 
 if (!isset($_SESSION["login"])) {
   header("Location: ../login.php");
