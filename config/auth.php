@@ -11,6 +11,7 @@ function registrasi($data)
   // stripslashes = membersihkan username 
   // Memaksa agar input menjadi huruf kecil
   $username = strtolower(stripslashes($data["username"]));
+  $email = strtolower(stripslashes($data["email"]));
 
   // Memungkinkan user memasukan tanda kutip
   $password = mysqli_real_escape_string($conn, $data["password"]);
@@ -22,13 +23,23 @@ function registrasi($data)
   // } 
 
   // Cek username sudah ada / belum
-  $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+  $resultUsername = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
 
-  if (mysqli_fetch_assoc($result)) {
+  if (mysqli_fetch_assoc($resultUsername)) {
     echo "<script>
             alert('Username sudah terdaftar')
           </script>";
     return false;
+  }
+
+  // Cek email sudah ada / belum
+  $resultEmail = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email' ");
+
+  if (mysqli_fetch_assoc($resultEmail)) {
+    echo "<script>
+          alert ('Email sudah terdaftar!')  
+        </script>";
+    return false; 
   }
 
   // Konfirmasi password
@@ -43,7 +54,7 @@ function registrasi($data)
   $password = password_hash($password, PASSWORD_DEFAULT);
 
   // Tambahkan user baru ke database
-  mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password', '')");
+  mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$email', '$password', '')");
 
   // Menghasilkan 1 jika berhasil -1 jika gagal
   return mysqli_affected_rows($conn);
