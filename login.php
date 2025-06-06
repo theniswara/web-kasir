@@ -48,8 +48,8 @@ if (isset($_POST["login"])) {
       // cek remember me
       if (isset($_POST['remember-me'])) {
         // buat cookie
-        setcookie('id', $row['id_user'], time() + 60,);
-        setcookie('key', hash('sha256', $row['username']), time() + 60);
+        setcookie('id', $row['id_user'], time() + 60 * 60 * 24 * 30);
+        setcookie('key', hash('sha256', $row['username']), time() + 60 * 60 * 24 * 30);
       }
 
       // perbolehkan user masuk ke sistem
@@ -131,11 +131,8 @@ include('includes/header.php');
               <div class="d-flex justify-content-between">
                 <div class="form-check mb-0">
                   <input class="form-check-input" type="checkbox" name="remember-me" id="remember-me" />
-                  <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  <label class="form-check-label" for="remember-me"> Ingat Saya </label>
                 </div>
-                <a href="auth-forgot-password-basic.html">
-                  <span>Forgot Password?</span>
-                </a>
               </div>
             </div>
             <div class="mb-6">
