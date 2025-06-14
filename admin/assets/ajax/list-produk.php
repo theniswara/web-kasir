@@ -20,7 +20,7 @@ $produk = query($query);
       <th style="width:13%">Merek</th>
       <th style="width:8%">Stok</th>
       <th style="width:14%">Harga</th>
-      <th class="text-center" style="width:13%">Action</th>
+      <th class="text-center" style="width:13%">Aksi</th>
     </tr>
   </thead>
   <tbody class="table-border-bottom-0">

@@ -116,28 +116,32 @@ include('includes/header.php');
       <h4 class="card-header fw-bold">Daftar Pesanan / Transaksi
       </h4>
       <div class="table-responsive text-nowrap">
-        <table class="table table-bordered table-hover align-middle text-center" style="min-width: 800px;">
-          <thead class="table-light align-middle">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-primary text-white align-middle">
             <tr>
-              <th style="width: 50px;">No</th>
-              <th style="width: 120px;">Tanggal</th>
-              <th style="width: 180px;">Customer</th>
-              <th style="width: 120px;">Kasir</th>
-              <th style="width: 120px;">Total</th>
-              <th style="width: 120px;">Aksi</th>
+              <th class="text-center" style="width:6%">No</th>
+              <th style="width:18%">Tanggal</th>
+              <th style="width:28%">Customer</th>
+              <th style="width:18%">Kasir</th>
+              <th style="width:18%">Total</th>
+              <th class="text-center" style="width:12%">Aksi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-border-bottom-0">
             <?php $no = 1;
             while ($row = mysqli_fetch_assoc($transaksi)): ?>
               <tr>
-                <td><?= $no++ ?></td>
-                <td><?= htmlspecialchars($row['tanggal']) ?></td>
-                <td><?= htmlspecialchars($row['customer_nama']) ?></td>
-                <td><?= htmlspecialchars($row['kasir_nama']) ?></td>
-                <td class="text-end">Rp <?= number_format($row['total'], 0, ',', '.') ?></td>
-                <td>
-                  <a href="struk.php?id=<?= $row['id_transaksi'] ?>" class="btn btn-info btn-sm" target="_blank">Lihat Struk</a>
+                <td class="text-center fw-bold"><?= $no++ ?></td>
+                <td class="align-middle"><span class="badge bg-label-info px-2 py-1"><i class="bx bx-calendar me-1"></i><?= htmlspecialchars($row['tanggal']) ?></span></td>
+                <td class="align-middle"><span class="fw-semibold text-dark"><?= htmlspecialchars($row['customer_nama']) ?></span></td>
+                <td class="align-middle"><span class="fw-semibold text-dark"><?= htmlspecialchars($row['kasir_nama']) ?></span></td>
+                <td class="align-middle text-end"><span class="fw-bold">Rp <?= number_format($row['total'], 0, ',', '.') ?></span></td>
+                <td class="align-middle">
+                  <div class="d-flex justify-content-center gap-2">
+                    <a href="struk.php?id=<?= $row['id_transaksi'] ?>" class="btn btn-info btn-sm btn-rounded px-2" target="_blank" title="Lihat Struk">
+                      <i class="bx bx-receipt"></i> Struk
+                    </a>
+                  </div>
                 </td>
               </tr>
             <?php endwhile; ?>
