@@ -124,24 +124,24 @@ include('includes/header.php');
         </a>
       </h4>
       <div class="table-responsive text-nowrap" id="container">
-        <table class="table table-bordered table-hover align-middle text-center" style="min-width: 1000px;">
-          <thead class="table-light align-middle">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-primary text-white align-middle">
             <tr>
-              <th style="width: 50px;">No</th>
-              <th style="width: 100px;">Gambar</th>
-              <th style="width: 180px;">Nama Produk</th>
-              <th style="width: 120px;">Kategori</th>
-              <th style="width: 120px;">Merek</th>
-              <th style="width: 80px;">Stok</th>
-              <th style="width: 120px;">Harga</th>
-              <th style="width: 120px;">Actions</th>
+              <th class="text-center" style="width:5%">No</th>
+              <th style="width:12%">Gambar</th>
+              <th style="width:22%">Nama Produk</th>
+              <th style="width:13%">Kategori</th>
+              <th style="width:13%">Merek</th>
+              <th style="width:8%">Stok</th>
+              <th style="width:14%">Harga</th>
+              <th class="text-center" style="width:13%">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-border-bottom-0">
             <?php $i = 1; ?>
             <?php foreach ($produk as $row) : ?>
               <tr>
-                <td class="text-center"> <?= $i ?> </td>
+                <td class="text-center fw-bold"> <?= $i ?> </td>
                 <td>
                   <div class="d-flex align-items-center justify-content-center">
                     <img src="assets/img/produk/<?= $row['gambar'] ?>" alt="" style="width: 70px; height: 70px; object-fit: cover;" class="rounded shadow-sm mx-auto d-block" />
@@ -157,7 +157,7 @@ include('includes/header.php');
                   } elseif ($row['id_kategori'] == 2) {
                     echo '<a title="Laptop"><span class="badge bg-label-warning"><i class="menu-icon tf-icons bx bx-laptop mx-auto"></i></span></a>';
                   } else {
-                    echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
+                    echo '<span class="badge bg-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                   }
                   ?>
                 </td>
@@ -187,12 +187,12 @@ include('includes/header.php');
                     } else if ($row['id_merek'] == 11) {
                       echo 'Nokia';
                     } else {
-                      echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
+                      echo '<span class="badge bg-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                     } ?>
                   </span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="badge bg-label-primary fs-6 px-3 py-2"><?= htmlspecialchars($row['stok']) ?></span>
+                  <span class="badge bg-label-primary fs-6 px-3 py-2"><i class="bx bx-cube me-1"></i><?= htmlspecialchars($row['stok']) ?></span>
                 </td>
                 <td class="align-middle text-end">
                   <span class="fw-bold">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>

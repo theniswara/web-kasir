@@ -113,29 +113,29 @@ include('includes/header.php');
         </a>
       </h4>
       <div class="table-responsive text-nowrap">
-        <table class="table table-bordered">
-          <thead>
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-primary text-white align-middle">
             <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>Nomor HP</th>
-              <th>Email</th>
-              <th>Action</th>
+              <th class="text-center" style="width:5%">No</th>
+              <th style="width:30%">Nama</th>
+              <th style="width:20%">Nomor HP</th>
+              <th style="width:30%">Email</th>
+              <th class="text-center" style="width:15%">Action</th>
             </tr>
           </thead>
           <tbody class="table-border-bottom-0">
             <?php $i = 1; ?>
             <?php while ($row = mysqli_fetch_assoc($customer)) : ?>
               <tr>
-                <td class="text-center"><?= $i ?></td>
+                <td class="text-center fw-bold"><?= $i ?></td>
                 <td>
-                  <span class="fw-semibold text-dark"><?= htmlspecialchars($row['nama']) ?></span>
+                  <span class="fw-semibold text-dark"><i class="bx bx-user me-2 text-primary"></i><?= htmlspecialchars($row['nama']) ?></span>
                 </td>
                 <td>
-                  <span class="text-dark"><?= htmlspecialchars($row['no_hp']) ?></span>
+                  <span class="text-dark"><i class="bx bx-phone me-2 text-success"></i><?= htmlspecialchars($row['no_hp']) ?></span>
                 </td>
                 <td>
-                  <span class="text-dark"><?= htmlspecialchars($row['email']) ?></span>
+                  <span class="text-dark"><i class="bx bx-envelope me-2 text-info"></i><?= htmlspecialchars($row['email']) ?></span>
                 </td>
                 <td>
                   <div class="d-flex justify-content-center gap-2">
@@ -150,7 +150,6 @@ include('includes/header.php');
               </tr>
               <?php $i++; ?>
             <?php endwhile; ?>
-            </tr>
           </tbody>
         </table>
       </div>
