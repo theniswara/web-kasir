@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2025 at 09:43 AM
+-- Generation Time: Jun 14, 2025 at 07:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,8 +72,10 @@ CREATE TABLE `detail_transaksi` (
 INSERT INTO `detail_transaksi` (`id_detail`, `id_transaksi`, `id_produk`, `qty`, `harga_satuan`) VALUES
 (1, 1, 3, 1, 7500000.00),
 (2, 2, 2, 5, 13000000.00),
-(3, 3, 43, 1, 250000.00),
-(4, 3, 2, 1, 13000000.00);
+(4, 3, 2, 1, 13000000.00),
+(5, 4, 42, 5, 5000000.00),
+(6, 5, 2, 2, 13000000.00),
+(7, 6, 2, 1, 13000000.00);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,7 @@ CREATE TABLE `produk` (
   `gambar` varchar(100) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `harga` decimal(12,2) NOT NULL,
-  `quantity` int(11) NOT NULL,
+  `stok` int(11) NOT NULL,
   `id_kategori` int(11) DEFAULT NULL,
   `id_merek` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -145,18 +147,20 @@ CREATE TABLE `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `gambar`, `nama_produk`, `harga`, `quantity`, `id_kategori`, `id_merek`) VALUES
+INSERT INTO `produk` (`id_produk`, `gambar`, `nama_produk`, `harga`, `stok`, `id_kategori`, `id_merek`) VALUES
 (1, 'samsung-a14.jpg', 'Samsung Galaxy A14', 2500000.00, 15, 1, 1),
-(2, 'iphone-13.jpg', 'iPhone 13', 13000000.00, 2, 1, 10),
+(2, 'iphone-13.jpg', 'iPhone 13', 13000000.00, 10, 1, 10),
 (3, 'asus-vivobook-14.jpg', 'ASUS Vivobook 14', 7500000.00, 9, 2, 3),
 (4, 'lenovo-ideapad-3.jpg', 'Lenovo IdeaPad 3', 6800000.00, 12, 2, 4),
 (5, 'xiaomi-redmi-12.jpg', 'Xiaomi Redmi Note 12', 2900000.00, 20, 1, 5),
-(8, 'infinix-hot-30.jpg', 'Infinix Hot 30', 1900000.00, 16, 1, 8),
 (38, '683011240c77d.jpg', 'OPPO F11 Pro', 10000000.00, 7, 1, 10),
 (39, '6830344a616ca.webp', 'iPhone XR', 7000000.00, 14, 1, 2),
 (41, '68329150a1218.jpg', 'HP Pavilion Plus 14', 8200000.00, 25, 2, 6),
-(42, '68345a540ef0a.webp', 'Samsung A 54 5g', 5000000.00, 17, 1, 1),
-(43, '68345d1a819d3.jpg', 'Nokia', 250000.00, 11, 1, 11);
+(42, '68345a540ef0a.webp', 'Samsung A 54 5g', 5000000.00, 12, 1, 1),
+(45, '684d0b3b2987d.jpg', 'tes', 1.00, 0, 2, 11),
+(46, '684d0c7a51597.jpg', 'swsw', 211.00, 0, 2, 1),
+(47, '684d0d27c2583.png', '2w2w2q', 12121.00, 0, 5, 7),
+(48, '684d0de3da96f.png', 'qwqw2qw', 2122112.00, 121221, 5, 8);
 
 -- --------------------------------------------------------
 
@@ -179,7 +183,10 @@ CREATE TABLE `transaksi` (
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_customer`, `tanggal`, `total`) VALUES
 (1, 1, 5, '2025-05-27', 7500000.00),
 (2, 1, 1, '2025-05-27', 65000000.00),
-(3, 1, 12, '2025-05-27', 13250000.00);
+(3, 1, 12, '2025-05-27', 13250000.00),
+(4, 1, 2, '2025-06-05', 25000000.00),
+(5, 1, 12, '2025-06-12', 26000000.00),
+(6, 1, 11, '2025-06-14', 13000000.00);
 
 -- --------------------------------------------------------
 
@@ -207,7 +214,8 @@ INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `role`) VALUES
 (9, 'someone', '', '$2y$10$yksCqpUZkmqVAK51SDZkNup.hVA5mKQwoMuW14lFrq0Uz3Qf9Snb.', ''),
 (10, 'apa', '', '$2y$10$2rr5uZivJ1/7zf/i2ZHR0eNmxvXGn8Otf2Ontto.l.lJckOEQbi6q', ''),
 (11, 'rismon', '', '$2y$10$qVvTJZ97AfuIX6MMSGyrduohe7SrxwMQBYTH6rCHr23a1HcFsafh2', ''),
-(12, 'roy', 'roy@gmail.com', '$2y$10$pQk/OXkDb3E7qwFnLyt5PeceEqNIQ9kOKWmbMyl5gELcMkF2iLDX6', '');
+(12, 'roy', 'roy@gmail.com', '$2y$10$pQk/OXkDb3E7qwFnLyt5PeceEqNIQ9kOKWmbMyl5gELcMkF2iLDX6', ''),
+(13, 'zikri', 'zikri@gmail.com', '$2y$10$eSlk7ER3q0ffCxPKU3U.aujuTDHM4EXG/mx.u3FSwuRBidZyZ.8Ya', '');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +283,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -293,19 +301,19 @@ ALTER TABLE `merek`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

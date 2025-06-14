@@ -158,10 +158,14 @@ include('includes/header.php');
               </select>
             </div>
             <div class="mb-4">
+              <label for="form-label">Stok / Jumlah</label>
+              <input type="number" name="stok" id="stok" class="form-control" required>
+              </label>
+            </div>
+            <div class="mb-4">
               <label class="form-label">Harga</label>
               <div class="input-group mb-3">
                 <span class="input-group-text">Rp.</span>
-
                 <input type="number" name="harga" class="form-control" required>
               </div>
             </div>

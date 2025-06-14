@@ -152,8 +152,8 @@ include('includes/header.php');
                   </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="defaultInput" class="form-label">Jumlah</label>
-                  <input name="quantity" id="defaultInput" class="form-control form-control-lg" type="number" placeholder="Jumlah" />
+                  <label for="defaultInput" class="form-label">Jumlah</label>
+                  <input name="jumlah" id="defaultInput" class="form-control form-control-lg" type="number" placeholder="Jumlah" />
                 </div>
                 <div class="col-md-2">
                   <button type="submit" name="tambahItem" class="btn btn-primary">Tambah Item</button>
@@ -179,7 +179,7 @@ include('includes/header.php');
               <tbody>
                 <?php $grandTotal = 0;
                 foreach ($_SESSION['produkItem'] as $key => $item):
-                  $subTotal = $item['harga'] * $item['quantity'];
+                  $subTotal = $item['harga'] * $item['jumlah'];
                   $grandTotal += $subTotal;
                 ?>
                   <tr>
@@ -190,7 +190,7 @@ include('includes/header.php');
                         <input type="hidden" name="itemKey" value="<?= $key ?>">
                         <button type="submit" name="kurangQty" class="btn btn-outline-secondary btn-sm">-</button>
                       </form>
-                      <span class="mx-2 fw-bold"><?= $item['quantity'] ?></span>
+                      <span class="mx-2 fw-bold"><?= $item['jumlah'] ?></span>
                       <form method="post" action="kode-pesanan.php" class="d-inline">
                         <input type="hidden" name="itemKey" value="<?= $key ?>">
                         <button type="submit" name="tambahQty" class="btn btn-outline-secondary btn-sm">+</button>

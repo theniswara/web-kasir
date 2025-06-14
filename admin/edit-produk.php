@@ -163,6 +163,10 @@ include('includes/header.php');
               </select>
             </div>
             <div class="mb-4">
+              <label class="form-label" for="stok">Stok / Jumlah</label>
+              <input type="number" name="stok" id="stok" class="form-control" value="<?= $produk["stok"]; ?>" min="0" required>
+            </div>
+            <div class="mb-4">
               <label class="form-label">Harga</label>
               <div class="input-group mb-3">
               <span class="input-group-text">Rp.</span>

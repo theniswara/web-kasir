@@ -132,6 +132,7 @@ include('includes/header.php');
               <th>Nama Produk</th>
               <th>Kategori</th>
               <th>Merek</th>
+              <th>Stok</th>
               <th>Harga</th>
               <th>Actions</th>
             </tr>
@@ -200,6 +201,9 @@ include('includes/header.php');
                     } else {
                       echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                     } ?></span>
+                </td>
+                <td class="align-middle text-center">
+                  <span class="badge bg-label-primary"><?= htmlspecialchars($row['stok']) ?></span>
                 </td>
                 <td class="align-middle text-end">
                   <span class="fw-bold"">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>

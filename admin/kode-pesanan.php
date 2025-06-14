@@ -11,14 +11,14 @@ if (!isset($_SESSION['produkItemId'])) $_SESSION['produkItemId'] = [];
 // Tambah produk ke keranjang
 if (isset($_POST['tambahItem'])) {
   $productId = htmlspecialchars($_POST['id_produk']);
-  $quantity = (int) htmlspecialchars($_POST['quantity']);
-  if ($quantity < 1) $quantity = 1;
+  $jumlah = (int) htmlspecialchars($_POST['jumlah']);
+  if ($jumlah < 1) $jumlah = 1;
 
   $cekProduk = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk='$productId' LIMIT 1");
   if ($cekProduk && mysqli_num_rows($cekProduk) > 0) {
     $row = mysqli_fetch_assoc($cekProduk);
-    if ($row['quantity'] < $quantity) {
-      $_SESSION['error'] = 'Stok hanya tersedia ' . $row['quantity'];
+    if ($row['stok'] < $jumlah) {
+      $_SESSION['error'] = 'Stok hanya tersedia ' . $row['stok'];
       header('Location: buat-pesanan.php');
       exit;
     }
@@ -27,13 +27,13 @@ if (isset($_POST['tambahItem'])) {
     foreach ($_SESSION['produkItem'] as $key => $item) {
       if ($item['id_produk'] == $productId) {
         // Update qty
-        $newQty = $item['quantity'] + $quantity;
-        if ($row['quantity'] < $newQty) {
-          $_SESSION['error'] = 'Stok hanya tersedia ' . $row['quantity'];
+        $newQty = $item['jumlah'] + $jumlah;
+        if ($row['stok'] < $newQty) {
+          $_SESSION['error'] = 'Stok hanya tersedia ' . $row['stok'];
           header('Location: buat-pesanan.php');
           exit;
         }
-        $_SESSION['produkItem'][$key]['quantity'] = $newQty;
+        $_SESSION['produkItem'][$key]['jumlah'] = $newQty;
         $found = true;
         break;
       }
@@ -44,7 +44,7 @@ if (isset($_POST['tambahItem'])) {
         'gambar' => $row['gambar'],
         'nama_produk' => $row['nama_produk'],
         'harga' => $row['harga'],
-        'quantity' => $quantity
+        'jumlah' => $jumlah
       ];
     }
     $_SESSION['success'] = 'Item berhasil ditambahkan!';
@@ -64,10 +64,10 @@ if (isset($_POST['tambahQty'])) {
     $id_produk = $_SESSION['produkItem'][$key]['id_produk'];
     $cekProduk = mysqli_query($conn, "SELECT * FROM produk WHERE id_produk='$id_produk' LIMIT 1");
     $row = mysqli_fetch_assoc($cekProduk);
-    if ($_SESSION['produkItem'][$key]['quantity'] < $row['quantity']) {
-      $_SESSION['produkItem'][$key]['quantity']++;
+    if ($_SESSION['produkItem'][$key]['jumlah'] < $row['stok']) {
+      $_SESSION['produkItem'][$key]['jumlah']++;
     } else {
-      $_SESSION['error'] = 'Stok hanya tersedia ' . $row['quantity'];
+      $_SESSION['error'] = 'Stok hanya tersedia ' . $row['stok'];
     }
   }
   header('Location: buat-pesanan.php');
@@ -77,11 +77,8 @@ if (isset($_POST['tambahQty'])) {
 if (isset($_POST['kurangQty'])) {
   $key = (int)$_POST['itemKey'];
   if (isset($_SESSION['produkItem'][$key])) {
-    if ($_SESSION['produkItem'][$key]['quantity'] > 1) {
-      $_SESSION['produkItem'][$key]['quantity']--;
-    } else {
-      unset($_SESSION['produkItem'][$key]);
-      $_SESSION['produkItem'] = array_values($_SESSION['produkItem']);
+    if ($_SESSION['produkItem'][$key]['jumlah'] > 1) {
+      $_SESSION['produkItem'][$key]['jumlah']--;
     }
   }
   header('Location: buat-pesanan.php');
@@ -115,7 +112,7 @@ if (isset($_POST['simpanTransaksi'])) {
   $tanggal = date('Y-m-d');
   $total = 0;
   foreach ($_SESSION['produkItem'] as $item) {
-    $total += $item['harga'] * $item['quantity'];
+    $total += $item['harga'] * $item['jumlah'];
   }
   // Simpan ke tabel transaksi
   $query = "INSERT INTO transaksi (id_user, id_customer, tanggal, total) VALUES ('$id_user', '$id_customer', '$tanggal', '$total')";
@@ -124,11 +121,11 @@ if (isset($_POST['simpanTransaksi'])) {
     // Simpan detail transaksi
     foreach ($_SESSION['produkItem'] as $item) {
       $id_produk = $item['id_produk'];
-      $qty = $item['quantity'];
+      $qty = $item['jumlah'];
       $harga = $item['harga'];
       mysqli_query($conn, "INSERT INTO detail_transaksi (id_transaksi, id_produk, qty, harga_satuan) VALUES ('$id_transaksi', '$id_produk', '$qty', '$harga')");
       // Update stok produk
-      mysqli_query($conn, "UPDATE produk SET quantity = quantity - $qty WHERE id_produk = '$id_produk'");
+      mysqli_query($conn, "UPDATE produk SET stok = stok - $qty WHERE id_produk = '$id_produk'");
     }
     unset($_SESSION['produkItem']);
     $_SESSION['success'] = 'Transaksi berhasil disimpan!';

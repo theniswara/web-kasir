@@ -26,6 +26,7 @@ function tambahProduk($data)
   $id_kategori = htmlspecialchars($data["id_kategori"]);
   $harga = htmlspecialchars($data["harga"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
+  $stok = htmlspecialchars($data["stok"]);
 
   // upload gambar
   $gambar = upload();
@@ -36,7 +37,7 @@ function tambahProduk($data)
   // query insert data Produk
   $query = "INSERT INTO produk 
           VALUES
-          ('', '$gambar', '$nama_produk', '$harga', '', '$id_kategori', '$id_merek')";
+          ('', '$gambar', '$nama_produk', '$harga', '$stok', '$id_kategori', '$id_merek')";
   mysqli_query($conn, $query);
 
   return mysqli_affected_rows($conn);
@@ -93,6 +94,9 @@ function upload()
 function hapusProduk($id)
 {
   global $conn;
+  // Hapus dulu detail transaksi yang terkait produk ini
+  mysqli_query($conn, "DELETE FROM detail_transaksi WHERE id_produk = $id");
+  // Baru hapus produk
   mysqli_query($conn, "DELETE FROM produk WHERE id_produk = $id");
   return mysqli_affected_rows($conn);
 }
@@ -108,6 +112,7 @@ function editProduk($data)
   $harga = htmlspecialchars($data["harga"]);
   $id_merek = htmlspecialchars($data["id_merek"]);
   $gambarLama = htmlspecialchars($data["gambarLama"]);
+  $stok = htmlspecialchars($data["stok"]);
 
   // cek apakah user pilih gambar baru / tidak
   if ($_FILES['gambar']['error'] === 4) {
@@ -116,15 +121,15 @@ function editProduk($data)
     $gambar = upload();
   }
 
-
-  // query insert data
+  // query update data
   $query = "UPDATE produk
           SET
           nama_produk = '$nama_produk',
           id_kategori = '$id_kategori',
           harga = '$harga',
           gambar = '$gambar',
-          id_merek = '$id_merek'
+          id_merek = '$id_merek',
+          stok = '$stok'
           WHERE id_produk = $id_produk
           ";
   mysqli_query($conn, $query);
