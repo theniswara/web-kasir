@@ -116,15 +116,15 @@ include('includes/header.php');
       <h4 class="card-header fw-bold">Daftar Pesanan / Transaksi
       </h4>
       <div class="table-responsive text-nowrap">
-        <table class="table table-bordered align-middle">
-          <thead class="table-light">
+        <table class="table table-bordered table-hover align-middle text-center" style="min-width: 800px;">
+          <thead class="table-light align-middle">
             <tr>
-              <th>No</th>
-              <th>Tanggal</th>
-              <th>Customer</th>
-              <th>Kasir</th>
-              <th>Total</th>
-              <th>Aksi</th>
+              <th style="width: 50px;">No</th>
+              <th style="width: 120px;">Tanggal</th>
+              <th style="width: 180px;">Customer</th>
+              <th style="width: 120px;">Kasir</th>
+              <th style="width: 120px;">Total</th>
+              <th style="width: 120px;">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -135,7 +135,7 @@ include('includes/header.php');
                 <td><?= htmlspecialchars($row['tanggal']) ?></td>
                 <td><?= htmlspecialchars($row['customer_nama']) ?></td>
                 <td><?= htmlspecialchars($row['kasir_nama']) ?></td>
-                <td>Rp <?= number_format($row['total'], 0, ',', '.') ?></td>
+                <td class="text-end">Rp <?= number_format($row['total'], 0, ',', '.') ?></td>
                 <td>
                   <a href="struk.php?id=<?= $row['id_transaksi'] ?>" class="btn btn-info btn-sm" target="_blank">Lihat Struk</a>
                 </td>

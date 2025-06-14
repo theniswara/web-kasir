@@ -128,6 +128,8 @@ if (isset($_POST['simpanTransaksi'])) {
       mysqli_query($conn, "UPDATE produk SET stok = stok - $qty WHERE id_produk = '$id_produk'");
     }
     unset($_SESSION['produkItem']);
+    unset($_SESSION['id_customer']);
+    unset($_SESSION['customer_nama']);
     $_SESSION['success'] = 'Transaksi berhasil disimpan!';
     header('Location: buat-pesanan.php');
     exit;

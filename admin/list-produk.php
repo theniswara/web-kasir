@@ -124,33 +124,27 @@ include('includes/header.php');
         </a>
       </h4>
       <div class="table-responsive text-nowrap" id="container">
-        <table class="table table-bordered">
-          <thead class="fw-bold">
+        <table class="table table-bordered table-hover align-middle text-center" style="min-width: 1000px;">
+          <thead class="table-light align-middle">
             <tr>
-              <th>No</th>
-              <th>Gambar</th>
-              <th>Nama Produk</th>
-              <th>Kategori</th>
-              <th>Merek</th>
-              <th>Stok</th>
-              <th>Harga</th>
-              <th>Actions</th>
+              <th style="width: 50px;">No</th>
+              <th style="width: 100px;">Gambar</th>
+              <th style="width: 180px;">Nama Produk</th>
+              <th style="width: 120px;">Kategori</th>
+              <th style="width: 120px;">Merek</th>
+              <th style="width: 80px;">Stok</th>
+              <th style="width: 120px;">Harga</th>
+              <th style="width: 120px;">Actions</th>
             </tr>
           </thead>
           <tbody>
             <?php $i = 1; ?>
             <?php foreach ($produk as $row) : ?>
               <tr>
-                <td class="text-center">
-                  <?= $i ?>
-                </td>
+                <td class="text-center"> <?= $i ?> </td>
                 <td>
-                  <div class="d-flex align-items-center">
-                    <img
-                      src="assets/img/produk/<?= $row['gambar'] ?>"
-                      alt=""
-                      style="width: 80px; height: 80px; object-fit: cover;"
-                      class="rounded mx-auto d-block" />
+                  <div class="d-flex align-items-center justify-content-center">
+                    <img src="assets/img/produk/<?= $row['gambar'] ?>" alt="" style="width: 70px; height: 70px; object-fit: cover;" class="rounded shadow-sm mx-auto d-block" />
                   </div>
                 </td>
                 <td class="align-middle">
@@ -158,17 +152,11 @@ include('includes/header.php');
                 </td>
                 <td class="text-center align-middle">
                   <?php
-                  // Ganti dengan id_kategori yang sesuai
                   if ($row['id_kategori'] == 1) {
-                    // Misal kategori 1: Makanan
-                    echo '<a title="Smartphone">
-                        <span class="badge bg-label-info"> <i class="menu-icon tf-icons bx bxs-smartphone mx-auto"></i></span></a>';
+                    echo '<a title="Smartphone"><span class="badge bg-label-info"><i class="menu-icon tf-icons bx bxs-smartphone mx-auto"></i></span></a>';
                   } elseif ($row['id_kategori'] == 2) {
-                    // Misal kategori 2: Minuman
-                    echo '<a title="Laptop">
-                        <span class="badge bg-label-warning"> <i class="menu-icon tf-icons bx bx-laptop mx-auto"></i></span></a>';
+                    echo '<a title="Laptop"><span class="badge bg-label-warning"><i class="menu-icon tf-icons bx bx-laptop mx-auto"></i></span></a>';
                   } else {
-                    // Kategori lain
                     echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
                   }
                   ?>
@@ -200,61 +188,62 @@ include('includes/header.php');
                       echo 'Nokia';
                     } else {
                       echo '<span class="badge badge-secondary rounded-pill d-inline"><i class="bx bx-question-mark"></i> Lainnya</span>';
-                    } ?></span>
+                    } ?>
+                  </span>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="badge bg-label-primary"><?= htmlspecialchars($row['stok']) ?></span>
+                  <span class="badge bg-label-primary fs-6 px-3 py-2"><?= htmlspecialchars($row['stok']) ?></span>
                 </td>
                 <td class="align-middle text-end">
-                  <span class="fw-bold"">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>
-                  </td>
-                  <td>
-                    <div class=" d-flex justify-content-center gap-2">
+                  <span class="fw-bold">Rp. <?= number_format($row['harga'], 0, ',', '.') ?></span>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-center gap-2">
                     <a href="edit-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
                       <i class="bx bx-edit"></i>
                     </a>
                     <a href="../config/hapus-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
                       <i class="bx bx-trash"></i>
                     </a>
+                  </div>
+                </td>
+              </tr>
+              <?php $i++; ?>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
       </div>
-      </td>
-      </tr>
-      <?php $i++; ?>
-    <?php endforeach; ?>
-    </tbody>
-    </table>
     </div>
   </div>
-</div>
-<!--/ Basic Bootstrap Table -->
+  <!--/ Basic Bootstrap Table -->
 
-<script src="assets/js/script.js"></script>
+  <script src="assets/js/script.js"></script>
 
-<script>
-  // Sidebar active tab logic for List Produk
-  document.addEventListener('DOMContentLoaded', function() {
-    var sidebarLink = document.querySelector('a[href="list-produk.php"]');
-    if (sidebarLink) {
-      // Remove 'active' from all menu-item
-      document.querySelectorAll('.menu-item').forEach(function(item) {
-        item.classList.remove('active');
-      });
-      // Add 'active' to the parent .menu-item of the current link
-      var parentMenuItem = sidebarLink.closest('.menu-item');
-      if (parentMenuItem) {
-        parentMenuItem.classList.add('active');
-        // If inside submenu, also open parent and set parent as active
-        var parentMenuToggle = parentMenuItem.closest('.menu-sub');
-        if (parentMenuToggle) {
-          var parentToggleItem = parentMenuToggle.closest('.menu-item');
-          if (parentToggleItem) {
-            parentToggleItem.classList.add('open', 'active');
+  <script>
+    // Sidebar active tab logic for List Produk
+    document.addEventListener('DOMContentLoaded', function() {
+      var sidebarLink = document.querySelector('a[href="list-produk.php"]');
+      if (sidebarLink) {
+        // Remove 'active' from all menu-item
+        document.querySelectorAll('.menu-item').forEach(function(item) {
+          item.classList.remove('active');
+        });
+        // Add 'active' to the parent .menu-item of the current link
+        var parentMenuItem = sidebarLink.closest('.menu-item');
+        if (parentMenuItem) {
+          parentMenuItem.classList.add('active');
+          // If inside submenu, also open parent and set parent as active
+          var parentMenuToggle = parentMenuItem.closest('.menu-sub');
+          if (parentMenuToggle) {
+            var parentToggleItem = parentMenuToggle.closest('.menu-item');
+            if (parentToggleItem) {
+              parentToggleItem.classList.add('open', 'active');
+            }
           }
         }
       }
-    }
-  });
-</script>
+    });
+  </script>
 
 
-<?php include('includes/footer.php'); ?>
+  <?php include('includes/footer.php'); ?>
