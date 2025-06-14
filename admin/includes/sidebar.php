@@ -98,15 +98,6 @@
       </ul>
     </li>
 
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Admin</span>
-    </li>
-    <li class="menu-item">
-      <a href="list-admin.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-admin"></i>
-        <div class="text-truncate" data-i18n="Account Settings">Admin</div>
-      </a>
-    </li>
   </ul>
 </aside>
 <!-- / Menu -->
