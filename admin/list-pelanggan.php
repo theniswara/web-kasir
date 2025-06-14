@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../config/functions-pelanggan.php';
+require_once '../config/dbcon.php';
 
 if (!isset($_SESSION["login"])) {
   header("Location: ../login.php");

@@ -1,7 +1,7 @@
 <?php
-include 'dbcon.php';
+require_once '../config/dbcon.php';
 
-// Function tambah produk
+// Function tambah pelanggan  
 function tambahPelanggan($data)
 {
   global $conn;
@@ -24,6 +24,15 @@ function tambahPelanggan($data)
 function hapusPelanggan($id)
 {
   global $conn;
+  // Hapus detail_transaksi yang berelasi dengan transaksi milik customer ini
+  $result = mysqli_query($conn, "SELECT id_transaksi FROM transaksi WHERE id_customer = $id");
+  while ($row = mysqli_fetch_assoc($result)) {
+    $id_transaksi = $row['id_transaksi'];
+    mysqli_query($conn, "DELETE FROM detail_transaksi WHERE id_transaksi = $id_transaksi");
+  }
+  // Hapus transaksi milik customer ini
+  mysqli_query($conn, "DELETE FROM transaksi WHERE id_customer = $id");
+  // Baru hapus customer
   mysqli_query($conn, "DELETE FROM customer WHERE id_customer = $id");
   return mysqli_affected_rows($conn);
 }

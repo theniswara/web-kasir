@@ -1,5 +1,5 @@
 <?php
-include 'dbcon.php';
+require_once 'dbcon.php';
 
 // Function registrasi
 function registrasi($data)
@@ -39,7 +39,7 @@ function registrasi($data)
     echo "<script>
           alert ('Email sudah terdaftar!')  
         </script>";
-    return false; 
+    return false;
   }
 
   // Konfirmasi password
@@ -59,5 +59,3 @@ function registrasi($data)
   // Menghasilkan 1 jika berhasil -1 jika gagal
   return mysqli_affected_rows($conn);
 }
-
-?>

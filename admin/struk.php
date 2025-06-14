@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/dbcon.php';
+require_once '../config/dbcon.php';
 
 if (!isset($_GET['id'])) {
   echo '<div class="alert alert-danger">ID transaksi tidak ditemukan.</div>';

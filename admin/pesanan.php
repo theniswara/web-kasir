@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/dbcon.php';
+require_once '../config/dbcon.php';
 require '../config/functions-pelanggan.php';
 require '../config/functions-produk.php';
 
