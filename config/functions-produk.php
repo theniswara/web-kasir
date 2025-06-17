@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/dbcon.php';
 
-// Koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "toko_gadget");
 
 
 

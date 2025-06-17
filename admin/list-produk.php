@@ -39,8 +39,9 @@ include('includes/header.php');
             class="form-control border-0 shadow-none ps-1 ps-sm-2 d-md-block d-none"
             id="keyword"
             name="keyword"
-            placeholder="Search..."
+            placeholder="Cari..."
             aria-label="Search..."
+            autocomplete="off"
             autofocus />
         </form>
       </div>

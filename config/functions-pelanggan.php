@@ -1,5 +1,5 @@
 <?php
-require_once '../config/dbcon.php';
+require_once __DIR__ . '/dbcon.php';
 
 // Function tambah pelanggan  
 function tambahPelanggan($data)

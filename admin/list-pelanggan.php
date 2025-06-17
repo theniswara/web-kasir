@@ -11,8 +11,50 @@ if (!isset($_SESSION["login"])) {
 $customer = mysqli_query($conn, "SELECT * FROM customer");
 
 include('includes/header.php');
-include('includes/navbar.php');
 ?>
+
+
+<nav
+  class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme"
+  id="layout-navbar">
+  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-4 me-xl-0 d-xl-none">
+    <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
+      <i class="icon-base bx bx-menu icon-md"></i>
+    </a>
+  </div>
+
+  <div class="navbar-nav-right d-flex align-items-center justify-content-end" id="navbar-collapse">
+    <!-- Search -->
+    <div class="navbar-nav align-items-center me-auto">
+      <div class="nav-item d-flex align-items-center">
+        <span class="w-px-22 h-px-22"><i class="icon-base bx bx-search icon-md"></i></span>
+        <form class="d-none d-md-flex flex-grow-1 mx-4" role="search" style="max-width:400px;" action="" method="post">
+          <input
+            type="text"
+            class="form-control border-0 shadow-none ps-1 ps-sm-2 d-md-block d-none"
+            id="keyword2"
+            name="keyword"
+            placeholder="Search..."
+            aria-label="Search..."
+            autofocus />
+        </form>
+      </div>
+    </div>
+    <!-- /Search -->
+
+    <ul class="navbar-nav flex-row align-items-center ms-md-auto">
+      <ul class="navbar-nav flex-row align-items-center ms-md-auto">
+        <li class="nav-item">
+          <a class="btn btn-danger btn-sm fw-bold px-3" href="../logout.php">
+            <i class="icon-base bx bx-power-off me-2"></i>Log Out
+          </a>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+<!-- / Navbar -->
 
 
 <!-- Content wrapper -->
@@ -25,7 +67,7 @@ include('includes/navbar.php');
           <span class="icon-base bx bx-plus icon-sm me-2"></span>Tambah Pelanggan
         </a>
       </h4>
-      <div class="table-responsive text-nowrap">
+      <div class="table-responsive text-nowrap" id="container2">
         <table class="table table-bordered table-hover align-middle">
           <thead class="table-primary text-white align-middle">
             <tr>
@@ -71,6 +113,9 @@ include('includes/navbar.php');
   <!--/ Basic Bootstrap Table -->
 
 
+<script src="assets/js/jquery-3.7.1.js"></script>
+<script src="assets/js/script2.js"></script>
+  
   <script>
     // Sidebar active tab logic for List Produk
     document.addEventListener('DOMContentLoaded', function() {
