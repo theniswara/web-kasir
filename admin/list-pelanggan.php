@@ -113,9 +113,9 @@ include('includes/header.php');
   <!--/ Basic Bootstrap Table -->
 
 
-<script src="assets/js/jquery-3.7.1.js"></script>
-<script src="assets/js/script2.js"></script>
-  
+  <script src="assets/js/jquery-3.7.1.js"></script>
+  <script src="assets/js/script2.js"></script>
+
   <script>
     // Sidebar active tab logic for List Produk
     document.addEventListener('DOMContentLoaded', function() {

@@ -18,7 +18,9 @@
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg fill='%23ff9800'%3E%3Cpath d='M1 0a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h5v1H2v2h6V9H2V2h10v4h2V1a1 1 0 0 0-1-1z'/%3E%3Cpath d='M10 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm1 7V9h3v5z'/%3E%3C/g%3E%3C/svg%3E" 
+  
+  />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -48,7 +50,7 @@
 
   <!-- Page CSS -->
 
-  
+
 
   <!-- Helpers -->
   <script src="assets/vendor/js/helpers.js"></script>
@@ -73,7 +75,6 @@
     .select2-container--default .select2-selection--single .select2-selection__arrow {
       height: 48px !important;
     }
-    
   </style>
 
 </head>
@@ -87,7 +88,7 @@
 
       <?php
       include('sidebar.php');
-      
+
       ?>
 
       <div class="layout-page">
