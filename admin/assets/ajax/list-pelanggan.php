@@ -28,7 +28,7 @@ $customer = query($query);
       <tr>
         <td class="text-center fw-bold"><?= $i ?></td>
         <td>
-          <span class="fw-semibold text-dark"><i class="bx bx-user me-2 text-primary"></i><?= htmlspecialchars($row['nama']) ?></span>
+          <span class="fw-semibold text-dark"><?= htmlspecialchars($row['nama']) ?></span>
         </td>
         <td>
           <span class="text-dark"><i class="bx bx-phone me-2 text-success"></i><?= htmlspecialchars($row['no_hp']) ?></span>

@@ -86,7 +86,8 @@ include('includes/navbar.php');
             </div>
             <div class="mb-4">
               <label class="form-label">Gambar Produk</label>
-              <input type="file" name="gambar" class="form-control" required>
+              <img class="mb-4" id="gambarPreview" src="#" alt="Preview" style="display:none; max-width:200px; margin-top:10px;" />
+              <input type="file" name="gambar" class="form-control" id="gambarInput" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
           </form>
@@ -118,6 +119,16 @@ include('includes/navbar.php');
           }
         }
       }
+    }
+  });
+
+  // Image preview logic
+  document.getElementById('gambarInput').addEventListener('change', function(event) {
+    const [file] = event.target.files;
+    if (file) {
+      const preview = document.getElementById('gambarPreview');
+      preview.src = URL.createObjectURL(file);
+      preview.style.display = 'block';
     }
   });
 </script>

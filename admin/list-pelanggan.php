@@ -80,7 +80,7 @@ include('includes/header.php');
           </thead>
           <tbody class="table-border-bottom-0">
             <?php $i = 1; ?>
-            <?php while ($row = mysqli_fetch_assoc($customer)) : ?>
+            <?php foreach ($customer as $row) : ?>
               <tr>
                 <td class="text-center fw-bold"><?= $i ?></td>
                 <td>
@@ -104,7 +104,7 @@ include('includes/header.php');
                 </td>
               </tr>
               <?php $i++; ?>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>

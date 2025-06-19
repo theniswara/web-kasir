@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2025 at 07:56 AM
+-- Generation Time: Jun 19, 2025 at 02:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,17 +39,16 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`, `email`) VALUES
-(1, 'Daniel Diva', '081280626034', 'daniel@mail.com'),
-(2, 'Muhammad Zikri', '082386771995', 'muhammadzikri12@gmail.com'),
+(2, 'Zikri', '0823867747', 'muhammadzikri12@gmail.com'),
 (3, 'Sarah Wijaya', '089876543210', 'sarah.wijaya@mail.com'),
 (4, 'Ali Akbar', '081345672345', 'akbar@yahoo.com'),
 (5, 'Aldan Haposan', '085678912345', 'aldan.haposan@gmail.com'),
 (6, 'Imaniatul Jahroh', '087812345678', 'imaniatul@mail.com'),
 (7, 'Reiva Damayanti', '081276543210', 'reiva.damayanti@gmail.com'),
-(8, 'Amanda Ardhelia', '082134567890', 'amanda_ardhelia@mail.com'),
-(9, 'Mega Putri', '083112233445', 'megaputri@gmail.com'),
-(11, 'Hendra Gunawan', '085701234567', 'hendra_gunawan@yahoo.com'),
-(12, 'Adam', '0831122312121', 'adam@gmail.com');
+(17, 'Nuril', '123456', 'nuril@gmail.com'),
+(18, 'Divan', '09876', 'divana@gmail.com'),
+(19, 'Aryan', '123456', 'aryan@yahoo.com'),
+(20, 'Raditya', '123456', 'raditya@mail.com');
 
 -- --------------------------------------------------------
 
@@ -70,12 +69,15 @@ CREATE TABLE `detail_transaksi` (
 --
 
 INSERT INTO `detail_transaksi` (`id_detail`, `id_transaksi`, `id_produk`, `qty`, `harga_satuan`) VALUES
-(1, 1, 3, 1, 7500000.00),
-(2, 2, 2, 5, 13000000.00),
-(4, 3, 2, 1, 13000000.00),
-(5, 4, 42, 5, 5000000.00),
-(6, 5, 2, 2, 13000000.00),
-(7, 6, 2, 1, 13000000.00);
+(10, 9, 38, 1, 10000000.00),
+(11, 10, 41, 1, 8200000.00),
+(12, 11, 41, 22, 8200000.00),
+(13, 11, 38, 1, 10000000.00),
+(14, 11, 5, 1, 2900000.00),
+(15, 12, 2, 1, 13000000.00),
+(18, 15, 2, 2, 13000000.00),
+(19, 15, 38, 1, 10000000.00),
+(20, 16, 2, 1, 13000000.00);
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,6 @@ INSERT INTO `merek` (`id_merek`, `nama`) VALUES
 (4, 'Lenovo'),
 (5, 'Xiaomi'),
 (6, 'HP'),
-(7, 'Realme'),
 (8, 'Infinix'),
 (9, 'Acer'),
 (10, 'OPPO'),
@@ -148,19 +149,16 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `gambar`, `nama_produk`, `harga`, `stok`, `id_kategori`, `id_merek`) VALUES
-(1, 'samsung-a14.jpg', 'Samsung Galaxy A14', 2500000.00, 15, 1, 1),
-(2, 'iphone-13.jpg', 'iPhone 13', 13000000.00, 10, 1, 10),
-(3, 'asus-vivobook-14.jpg', 'ASUS Vivobook 14', 7500000.00, 9, 2, 3),
+(1, 'samsung-a14.jpg', 'Samsung Galaxy A14', 2500000.00, 11, 1, 1),
+(2, 'iphone-13.jpg', 'iPhone 13', 13000000.00, 0, 1, 10),
 (4, 'lenovo-ideapad-3.jpg', 'Lenovo IdeaPad 3', 6800000.00, 12, 2, 4),
-(5, 'xiaomi-redmi-12.jpg', 'Xiaomi Redmi Note 12', 2900000.00, 20, 1, 5),
-(38, '683011240c77d.jpg', 'OPPO F11 Pro', 10000000.00, 7, 1, 10),
-(39, '6830344a616ca.webp', 'iPhone XR', 7000000.00, 14, 1, 2),
-(41, '68329150a1218.jpg', 'HP Pavilion Plus 14', 8200000.00, 25, 2, 6),
-(42, '68345a540ef0a.webp', 'Samsung A 54 5g', 5000000.00, 12, 1, 1),
-(45, '684d0b3b2987d.jpg', 'tes', 1.00, 0, 2, 11),
-(46, '684d0c7a51597.jpg', 'swsw', 211.00, 0, 2, 1),
-(47, '684d0d27c2583.png', '2w2w2q', 12121.00, 0, 5, 7),
-(48, '684d0de3da96f.png', 'qwqw2qw', 2122112.00, 121221, 5, 8);
+(5, 'xiaomi-redmi-12.jpg', 'Xiaomi Redmi Note 12', 2900000.00, 19, 1, 5),
+(38, '683011240c77d.jpg', 'OPPO F11 Pro', 10000000.00, 4, 1, 10),
+(39, '6830344a616ca.webp', 'iPhone XR', 7000000.00, 12, 1, 2),
+(41, '68329150a1218.jpg', 'HP Pavilion Plus 14', 8200000.00, 2, 2, 6),
+(52, '685402e7f0df9.webp', 'Samsung A 54 5g', 5000000.00, 12, 1, 1),
+(53, '6854034b0c99b.jpg', 'ASUS Vivobook 14', 7500000.00, 20, 2, 3),
+(54, '685405625a5aa.jpg', 'Nokia', 250000.00, 100, 1, 11);
 
 -- --------------------------------------------------------
 
@@ -182,11 +180,14 @@ CREATE TABLE `transaksi` (
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_customer`, `tanggal`, `total`) VALUES
 (1, 1, 5, '2025-05-27', 7500000.00),
-(2, 1, 1, '2025-05-27', 65000000.00),
-(3, 1, 12, '2025-05-27', 13250000.00),
 (4, 1, 2, '2025-06-05', 25000000.00),
-(5, 1, 12, '2025-06-12', 26000000.00),
-(6, 1, 11, '2025-06-14', 13000000.00);
+(9, 1, 4, '2025-06-14', 10000000.00),
+(10, 1, 3, '2025-06-14', 8200000.00),
+(11, 1, 6, '2025-06-14', 193300000.00),
+(12, 1, 2, '2025-06-17', 13000000.00),
+(13, 1, 7, '2025-06-17', 11.00),
+(15, 1, 5, '2025-06-19', 36000000.00),
+(16, 1, 6, '2025-06-19', 13000000.00);
 
 -- --------------------------------------------------------
 
@@ -277,13 +278,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_customer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -301,13 +302,13 @@ ALTER TABLE `merek`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`

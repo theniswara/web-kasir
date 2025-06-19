@@ -148,12 +148,18 @@ include('includes/header.php');
                 </td>
                 <td>
                   <div class="d-flex justify-content-center gap-2">
-                    <a href="edit-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
-                      <i class="bx bx-edit"></i>
-                    </a>
-                    <a href="../config/hapus-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
-                      <i class="bx bx-trash"></i>
-                    </a>
+                    <?php if ($row["stok"] == 0) { ?>
+                      <a href="edit-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
+                        <i class="bx bx-edit"></i>
+                      </a>
+                    <?php } else { ?>
+                      <a href="edit-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-success btn-sm btn-rounded" title="Edit">
+                        <i class="bx bx-edit"></i>
+                      </a>
+                      <a href="../config/hapus-produk.php?id=<?= $row["id_produk"] ?>" class="btn btn-danger btn-sm btn-rounded" title="Hapus" onclick="return confirm('Yakin ingin menghapus produk ini?');">
+                        <i class="bx bx-trash"></i>
+                      </a>
+                    <?php }; ?>
                   </div>
                 </td>
               </tr>
